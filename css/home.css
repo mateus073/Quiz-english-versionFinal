@@ -1,0 +1,430 @@
+/* css do menu de navegaçao esta no arquivo "menuFooter" */
+
+
+
+
+
+
+
+/* começo do css do main */
+
+/* começo do css do main1 */
+/* div principal do home*/
+body {
+    background-color: var(--branco);
+}
+
+
+/* tirando as paradas do link */
+.links {
+    text-decoration: none;
+    color: var(--branco);
+}
+
+.dMain1 {
+    background-image: url('../img/fundo22.jpeg');
+    background-position: center;
+    background-size: cover;
+    color: var(--branco);
+
+}
+
+
+/* div que armazena as 3 divs do home1 */
+.imgTextoBtn {
+    display: flex;
+    padding: 20px;
+}
+
+
+/* 1 das 3 divs do home1 */
+.texto {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2rem;
+    min-height: 400px;
+
+}
+
+.h2efeito {
+    color: var(--cinza-medio);
+    font-size: 60pt;
+    font-family: var(--font-titulo2);
+    font-weight: 650;
+}
+
+.pEfeito {
+    font-size: var(--font-pp);
+    color: var(--branco);
+    margin-bottom: 10px;
+    display: none;
+}
+
+.dbtntex {
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.dbtntex button {
+    display: none;
+    padding: 13px;
+    font-size: var(--font-p);
+    font-weight: 800;
+    background: linear-gradient(160deg, var(--preto), var(--cinza-forte), var(--azul-medio));
+    border: none;
+    border-radius: 30px;
+    color: var(--branco);
+    filter: drop-shadow(1px 1px 2px var(--azul-claro));
+}
+
+
+
+/* 2 das 3 divs do home1 */
+.logoHome {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoHome img {
+    height: 250px;
+    transition: all 0.5s;
+}
+
+
+/* 3 das 3 divs do home1 */
+.verULtimaPt {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.verULtimaPt p {
+    font-size: var(--font-p);
+    width: 350px;
+    text-align: center;
+    color: var(--azul-claro);
+}
+
+
+
+.verULtimaPt button {
+    filter: drop-shadow(1px 1px 1px var(--azul-claro));
+    width: 350px;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: var(--font-p);
+    font-weight: 600;
+    color: var(--branco);
+    background: linear-gradient(160deg, var(--preto), var(--cinza-forte), var(--azul-medio));
+}
+
+
+
+
+
+
+
+
+/* botoes do final */
+
+.pcMain1 {
+    display: flex;
+    justify-content: space-around;
+    padding: 80px 0px;
+}
+
+.pcMain1 button {
+    border: none;
+    border-radius: 30px;
+    padding: 12px;
+    font-size: var(--font-m);
+    background: linear-gradient(160deg, var(--azul-forte), var(--azul-claro));
+    filter: drop-shadow(1px 1px 2px var(--azul-claro));
+    color: var(--branco);
+    font-weight: 500;
+    transition: all 0.5s;
+}
+
+.pcMain1 button:hover {
+    box-shadow: 3px 3px 6px #142240;
+    transform: scale(0.9);
+}
+
+
+
+
+
+
+
+
+/* main2 */
+
+.textorint {
+    margin-top: 3rem;
+}
+
+.textorint h1 {
+    text-align: center;
+    padding-left: 3rem;
+    font-size: var(--font-mg);
+    font-family: var(--font-titulo2);
+    color: var(--cinza-forte);
+
+}
+
+.card {
+    display: flex;
+    gap: 3rem;
+    padding: 1rem;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--branco);
+}
+
+.imgCard {
+    box-shadow: 2px 2px 3px var(--cinza-forte);
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: rgb(247, 254, 255);
+    width: 300px;
+    height: 370px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgCard h3 {
+    font-family: var(--font-titulo2);
+    font-size: var(--font-mg);
+    color: var(--cinza-forte);
+    margin-bottom: 10px;
+}
+
+.imgCard p {
+    font-size: var(--font-pp);
+    color: var(--cinza-forte);
+    margin-bottom: 10px;
+}
+
+
+
+.dimgC {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, var(--cinza-forte), var(--cinza-medio), var(--cinza-claro));
+    border-radius: 50%;
+}
+
+.dimgC img {
+    height: 80px;
+    width: 80px;
+}
+
+
+.btnCard {
+    padding: 10px;
+    font-size: var(--font-p);
+    background: linear-gradient(160deg, var(--cinza-medio), var(--azul-forte));
+    color: var(--branco);
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+
+/* texto que fica abaixo dos cards */
+.textAprenseta {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    margin: 2rem;
+    text-align: center;
+    border-top: solid 2px var(--cinza-forte);
+}
+
+.textAprenseta h2 {
+    font-family: var(--font-titulo2);
+    font-size: var(--font-mg);
+    color: var(--cinza-forte);
+}
+
+.textAprenseta p {
+    font-size: var(--font-p);
+    color: var(--cinza-medio);
+}
+
+
+/* rodape rodape rodape rodape rodape rodape rodape rodape rodape rodape rodape rodape rodape rodape rodape rodape */
+footer {
+    background-color: var(--cinza-forte);
+    border-top: solid 2px var(--cinza-claro);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+footer p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-links img {
+    width: 30px;
+    height: 30px;
+    transition: ease 0.3s;
+}
+
+.social-links img:hover {
+    transform: scale(1.2);
+}
+
+
+
+
+
+@media (max-width: 1000px) {
+    :root {
+        --font-g: 25pt;
+        --font-mg: 20pt;
+        --font-m: 17pt;
+        --font-p: 12pt;
+        --font-pp: 11pt;
+    }
+
+    /****************** css do menu de navegaçao ta no arquivo "menuFooter"*******************************/
+
+    /* responsividade do main */
+    .texto {
+        display: none;
+    }
+
+    .imgTextoBtn {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .verULtimaPt {
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .verULtimaPt p {
+
+        width: 250px;
+        text-align: center;
+    }
+
+
+
+    .verULtimaPt button {
+        width: 250px;
+        padding: 15px;
+    }
+
+    .pcMain1 {
+        display: none;
+    }
+
+    /* aqui pra baixo ja e main 2 */
+
+    .textorint {
+        margin-top: 3rem;
+    }
+
+    .textorint h1 {
+        padding: 0px 10px;
+    }
+
+    .card {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0rem 1rem;
+    }
+
+    .imgCard {
+        padding: 1rem;
+        width: 280px;
+        height: 300px;
+        margin: 1rem;
+
+    }
+
+    .dimgC img {
+        width: 100%;
+        max-width: 80px;
+        height: auto;
+        margin: 0 auto 10px;
+    }
+
+    /* texto que fica abaixo dos cards */
+    .textAprenseta {
+        padding: 0.8rem;
+        gap: 0.5rem;
+        margin: 2rem 0.8rem;
+    }
+
+    .textAprenseta h2 {
+        font-family: var(--font-titulo2);
+        font-size: var(--font-mg);
+        color: var(--cinza-forte);
+    }
+
+    .textAprenseta p {
+        font-size: var(--font-p);
+        color: var(--cinza-medio);
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+    :root {
+        --font-g: 21pt;
+        --font-mg: 18pt;
+        --font-m: 15pt;
+        --font-p: 11pt;
+        --font-pp: 10pt;
+    }
+
+
+
+
+    /* cards do main */
+    .card {
+        gap: 1rem;
+    }
+
+    .btnCard {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}

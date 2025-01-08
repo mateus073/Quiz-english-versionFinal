@@ -1,0 +1,68 @@
+
+body {
+    background: linear-gradient(180deg, var(--preto), var(--cinza-medio));
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* pai da div opçoes */
+.tema-father {
+    margin: 1rem;
+    display: flex;
+    /*oculta a div que exibe os temas do quiz*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* filha do div das opçoes */
+.tema-son {
+    border: solid 3px var(--cinza-claro);
+    background: linear-gradient(360deg, var(--azul-medio), var(--cinza-medio));
+    filter: drop-shadow(1px 1px 4px var(--cinza-forte));
+    border-radius: 20px;
+    padding: 3rem;
+    background-color: var(--cinza-forte);
+}
+
+
+/* div pai das opçoes */
+.temas-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+/* titulo do tema */
+.h1tema {
+    color: white;
+    font-size: var(--font-g);
+    margin-bottom: 2rem;
+}
+
+/* opçoes */
+.option {
+    color: white;
+    font-size: var(--font-m);
+    border: solid 2px var(--cinza-claro);
+    box-shadow: 2px 2px 2px var(--cinza-forte);
+    border-radius: 20px;
+    width: 100%;
+    padding: 1rem;
+    transition: all 0.5s;
+}
+
+/* efeito pra respostas e para as opçoes de tema */
+.rOption:hover,
+.option:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 6px var(--cinza-forte);
+}
+

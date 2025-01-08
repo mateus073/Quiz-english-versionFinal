@@ -1,0 +1,210 @@
+
+/* css do menu ta no arquivo "menuFooter" */
+
+.main {
+    padding: 3rem;
+    background: linear-gradient(180deg, var(--cinza-forte), var(--cinza-medio));
+}
+
+.principal {
+    border-radius: 30px;
+    padding: 2rem;
+    background: linear-gradient(180deg, var(--cinza-medio), var(--azul-medio));
+    filter: drop-shadow(2px 2px 3px var(--azul-claro));
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 10px;
+}
+
+.bigpt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.dcirculo {
+    filter: drop-shadow(3px 3px 4px var(--azul-claro));
+    background: linear-gradient(360deg, var(--azul-medio), var(--azul-claro));
+    color: white;
+    border: double 10px var(--azul-claro);
+    border-radius: 50%;
+    padding: 3rem;
+}
+
+.scoreArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.8rem;
+    padding: 1rem;
+}
+
+.maiorPt {
+    font-size: var(--font-mg);
+    color: var(--branco);
+    font-weight: 600;
+}
+
+.pontucao {
+    font-size: var(--font-m);
+    color: var(--verde);
+}
+
+.dcirculo img {
+    height: 120px;
+}
+
+.acertos {
+    font-size: var(--font-p);
+}
+
+.tentar {
+    filter: drop-shadow(2px 2px 3px var(--azul-claro));
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: var(--font-p);
+    font-weight: 600;
+    color: var(--branco);
+    background: linear-gradient(160deg, var(--cinza-forte), var(--azul-medio));
+}
+
+
+.msgLogar {
+    border: solid 1px var(--azul-claro);
+    background: linear-gradient(180deg, var(--cinza-medio), var(--azul-medio));
+    color: var(--branco);
+    padding: 1rem;
+    margin: 20px;
+    text-align: center;
+    border-radius: 30px;
+    display: none;
+}
+
+.msgLogar h2 {
+    font-size: var(--font-m);
+}
+
+.logar {
+    filter: drop-shadow(2px 2px 3px var(--azul-claro));
+    padding: 10px 30px;
+    margin: 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: var(--font-p);
+    font-weight: 600;
+    color: var(--branco);
+    background: linear-gradient(180deg, var(--cinza-medio), var(--cinza-forte));
+}
+
+
+
+
+.historicoPai {
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    color: var(--branco)
+}
+
+.msgHistorico,
+.historico {
+    background: linear-gradient(180deg, var(--cinza-medio), var(--azul-medio));
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: solid 1px var(--azul-claro);
+    border-radius: 30px;
+    padding: 30px;
+}
+
+.historico h2 {
+    font-size: var(--font-m);
+}
+
+.historico p {
+    font-size: var(--font-p);
+}
+
+
+.olHistorico {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: var(--font-p);
+}
+
+.msgHistorico {
+    flex: 1;
+}
+
+
+
+@media (max-width: 800px) {
+    :root {
+        --font-g: 25pt;
+        --font-mg: 20pt;
+        --font-m: 17pt;
+        --font-p: 12pt;
+        --font-pp: 11pt;
+    }
+
+    .main {
+        padding: 1rem;
+    }
+
+    .scoreArea {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .dcirculo {
+        padding: 2rem;
+    }
+
+    .dcirculo img {
+        height: 100px;
+    }
+
+    .historicoPai {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+
+
+
+@media (max-width: 500px) {
+
+    :root {
+        --font-g: 21pt;
+        --font-mg: 18pt;
+        --font-m: 15pt;
+        --font-p: 11pt;
+        --font-pp: 10pt;
+    }
+
+    .scoreArea {
+        gap: 0.1rem;
+        padding: 0.5rem;
+    }
+    .dcirculo img {
+        height: 100px;
+    }
+
+    .msgHistorico {
+        text-align: center;
+    }
+}

@@ -1,0 +1,164 @@
+:root {
+    --preto: #0f171b;
+    --azul-forte: #142240;
+    --azul-claro: #4c95b3;
+    --cinza-forte: #152026;
+    --cinza-medio: #243944;
+    --cinza-claro: #35454d;
+    --vermelho: #e44545;
+    --verde: #85c421;
+    --azul-medio: #252f44;
+    --branco: #effaff;
+    --font-g: 30pt;
+    --font-mg: 25pt;
+    --font-m: 20pt;
+    --font-p: 14pt;
+    --font-pp: 13pt;
+    --font-titulo: "Rubik", serif;
+    --font-titulo2: "Baloo 2", serif;
+}
+
+
+.tema-father {
+    display: none;
+}
+
+.fatherResult {
+    display: none;
+}
+
+
+
+body {
+    background: linear-gradient(180deg, var(--preto), var(--cinza-medio));
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* css do menu ta no arquivo "menuFooter" */
+
+/* div pai do progresso */
+.barrProgress {
+    display: block;
+    height: 24px;
+    /*24 pq a borda oculpa 2 px em cima e 2 em baixo*/
+    margin: 10px;
+}
+
+/* div pai da barra de progresso */
+.fatherProgress {
+    width: 100%;
+    border: solid 2px var(--cinza-forte);
+    border-radius: 20px;
+    background-color: var(--cinza-claro);
+}
+
+.sonProgress {
+    background-color: var(--verde);
+    border-radius: 20px;
+    width: 1%;
+    transition: all 0.4s;
+}
+
+#audios {
+    display: none;
+}
+
+
+
+.questionArea {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.instruction {
+    color: var(--branco);
+    font-size: var(--font-mg);
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+
+.fraseATraduzir {
+    color: var(--branco);
+    font-size: var(--font-m);
+    border-bottom: solid 3px var(--azul-claro);
+    padding: 5px;
+    margin: 10px;
+}
+
+.areatraducao {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    border-top: 2px solid var(--cinza-claro);
+    border-bottom: 2px solid var(--cinza-claro);
+}
+
+
+.itens {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 1rem;
+}
+
+.item {
+    font-size: var(--font-pp);
+    font-weight: 500;
+    color: white;
+    border: solid 2px var(--cinza-claro);
+    border-radius: 15px;
+    padding: 1rem;
+    transition: all 0.3s;
+}
+
+.item:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 6px var(--cinza-forte);
+}
+
+/* botoes */
+.proximaQst {
+    border: none;
+    border-radius: 17px;
+    padding: 1rem;
+    margin: 20px;
+    font-size: var(--font-p);
+    font-weight: 600;
+    color: var(--branco);
+    background-color: var(--cinza-claro);
+}
+
+
+@media (max-width: 600px) {
+    :root {
+        --azul-forte: #142240;
+        --azul-claro: #4BC3F2;
+        --cinza-forte: #152026;
+        --cinza-medio: #1e2d35;
+        --cinza-claro: #3E5159;
+        --verde: #94D233;
+        --font-g: 1.75rem; /* 28px */
+        --font-mg: 1.5rem; /* 24px */
+        --font-m: 1.25rem; /* 20px */
+        --font-p: 0.875rem; /* 14px */
+        --font-pp: 0.75rem; /* 12px */
+    }
+
+    
+    .questionArea {
+        gap: 2rem;
+    }
+}

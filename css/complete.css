@@ -1,0 +1,319 @@
+
+body {
+    background: linear-gradient(180deg, var(--preto), var(--cinza-medio));
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* css do menu ta no arquivo "menuFooter" */
+
+
+
+/* div pai do progresso */
+.barrProgress {
+    display: none;
+    height: 24px;
+    /*24 pq a borda oculpa 2 px em cima e 2 em baixo*/
+    margin: 10px;
+}
+
+/* div pai da barra de progresso */
+.fatherProgress {
+    width: 100%;
+    border: solid 2px var(--cinza-forte);
+    border-radius: 20px;
+    background-color: var(--cinza-claro);
+}
+
+.sonProgress {
+    background-color: var(--verde);
+    border-radius: 20px;
+    width: 1%;
+    transition: all 0.4s;
+}
+
+/* pai da div opçoes */
+.tema-father {
+    margin: 1rem;
+    display: flex;
+    /*oculta a div que exibe os temas do quiz*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* filha do div das opçoes */
+.tema-son {
+    border: solid 3px var(--cinza-claro);
+    background: linear-gradient(360deg, var(--azul-medio), var(--cinza-medio));
+    filter: drop-shadow(1px 1px 4px var(--cinza-forte));
+    border-radius: 20px;
+    padding: 3rem;
+    background-color: var(--cinza-forte);
+}
+
+
+/* div pai das opçoes */
+.temas-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+/* titulo do tema */
+.h1tema {
+    color: white;
+    font-size: var(--font-g);
+    margin-bottom: 2rem;
+}
+
+/* opçoes */
+.option {
+    color: white;
+    font-size: var(--font-m);
+    border: solid 2px var(--cinza-claro);
+    box-shadow: 2px 2px 2px var(--cinza-forte);
+    border-radius: 20px;
+    width: 100%;
+    padding: 1rem;
+    transition: all 0.5s;
+}
+
+/* efeito pra respostas e para as opçoes de tema */
+.rOption:hover,
+.option:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 6px var(--cinza-forte);
+}
+
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* css das questoes */
+
+/* div pai das questoes */
+.questionArea {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+/* texto com instruction */
+.instruction {
+    font-size: var(--font-mg);
+    color: white;
+    padding: 0px 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* perguta e responstas */
+.questTraucao,
+.question {
+    font-size: var(--font-m);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.questTraucao {
+    display: none;
+}
+
+/* stylo do span da resposta que completa o texto atraves do js pra c */
+.spanCerto {
+    color: #94D233;
+    font-weight: 500;
+}
+
+.spanErado {
+    color: var(--vermelho);
+    font-weight: 500;
+}
+
+
+.questTraucao {
+    color: var(--cinza-claro);
+}
+
+/* pai das divs das questoes */
+.fatherOpt {
+    display: grid;
+    /* Ativa o Grid */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    justify-content: center;
+}
+
+/* divs que contem as respostas */
+.rOption {
+    font-size: var(--font-p);
+    font-weight: 500;
+    color: white;
+    border: solid 3px var(--cinza-claro);
+    border-radius: 15px;
+    padding: 1.1rem;
+    transition: all 0.3s;
+}
+
+/* botoes */
+.traducao,
+.proximaQst {
+    border: none;
+    border-radius: 17px;
+    padding: 1rem;
+    margin: 20px;
+    font-size: var(--font-p);
+    font-weight: 600;
+    color: var(--branco);
+    background-color: var(--cinza-claro);
+}
+
+
+
+/* js */
+.botao-verde { background-color: #94D233; }
+.botao-cinza { background-color: #3E5159; }
+
+
+/**********************************************************************************************************************************************/
+/* css da div que exibe o resultado */
+
+/* div pai da div que exibe as respostas */
+.fatherResult {
+    display: none;
+    /*ocultando a div do resultado*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* img da coroa */
+.gifVitoria img {
+    height: 100px;
+}
+
+
+.scoreArea {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: solid 3px var(--cinza-claro);
+    background: linear-gradient(360deg, var(--cinza-medio), var(--cinza-medio));
+    filter: drop-shadow(1px 1px 4px var(--cinza-forte));
+    border-radius: 30px;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+}
+
+.texResult {
+    font-size: var(--font-g);
+    font-weight: 500;
+    color: var(--branco);
+    margin-bottom: 10px;
+}
+
+/* texto de parabens */
+.scoreText1 {
+    font-size: var(--font-m);
+    color: white;
+}
+
+
+/* acertos */
+.scorePct {
+    font-size: var(--font-mg);
+    color: var(--verde);
+}
+
+
+
+.scoreText2 {
+    font-size: var(--font-p);
+}
+
+/* div que contem os botoes */
+.fatherResult button {
+    background-color: var(--azul-claro);
+    border: none;
+    border-radius: 15px;
+    padding: 0.8rem;
+    margin: 10px;
+    font-size: var(--font-p);
+    font-weight: 600;
+    color: var(--branco);
+}
+
+
+main {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/*************************************************************************************************************/
+@media (max-width: 600px) {
+    :root {
+        --azul-forte: #142240;
+        --azul-claro: #4BC3F2;
+        --cinza-forte: #152026;
+        --cinza-medio: #1e2d35;
+        --cinza-claro: #3E5159;
+        --verde: #94D233;
+        --font-g: 1.75rem; /* 28px */
+        --font-mg: 1.5rem; /* 24px */
+        --font-m: 1.25rem; /* 20px */
+        --font-p: 0.875rem; /* 14px */
+        --font-pp: 0.75rem; /* 12px */
+    }
+
+    
+    .questionArea {
+        gap: 2rem;
+    }
+    
+    .fatherOpt {
+        gap: 2rem;
+        display: grid;
+        /* Ativa o Grid */
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 colunas de tamanhos iguais */
+    }
+    
+    .fatherResult {
+        padding: 1rem;
+    }
+
+    .scoreArea {
+        padding: 1rem;
+    }
+
+/* opcoes de reposta */
+.rOption {
+    padding: 1rem;
+}
+
+
+    /* botoes */
+    .fatherResult button,
+    .traducao,
+    .proximaQst {
+        margin: 10px;
+        font-weight: 500;
+    }
+    
+}

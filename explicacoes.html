@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/menuFoter.css">
+    <link rel="stylesheet" href="css/explicacoes.css">
+    <!-- link dos icones do fontAwesom -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Quiz Ingles</title>
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <div class="hLogo">
+            <img src="img/logo2.png" alt="">
+        </div>
+
+        <!-- menu desktop -->
+        <nav class="menuDescktop">
+            <ul id="menuNav">
+                <li class="menuLi">
+                    <a href="index.html" class="aLink">Home</a>
+                </li>
+                <li class="menuLi">
+                    <a href="complete.html" class="aLink">Quiz</a>
+                </li>
+                <li class="menuLi">
+                    <a href="explicacoes.html" class="aLink">Explicacoes</a>
+                </li>
+                <li class="menuLi">
+                    <a href="historico.html" class="aLink">Historico</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <!-- comeco do menu de navegaçao mobile -->
+        <div class="btnAbrir">
+            <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
+        </div>
+
+        <div class="menuMob">
+            <div class="fecharMenu">
+                <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+            </div>
+            <nav class="navMob">
+                <ul id="menuNav">
+                    <li class="menuLi">
+                        <a href="index.html" class="aLink">Home</a>
+                    </li>
+                    <li class="menuLi">
+                        <a href="complete.html" class="aLink">Quiz</a>
+                    </li>
+                    <li class="menuLi">
+                        <a href="explicacoes.html" class="aLink">Explicacoes</a>
+                    </li>
+                    <li class="menuLi">
+                        <a href="historico.html" class="aLink">Historico</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <!-- div responsavel pelo efeito de desfoque no site quando abrir menu -->
+        <div class="overlayMenu" id="overlay"></div>
+    </header>
+
+
+    <!-- div que contem a barra de progresso -->
+    <header class="barrProgress">
+        <div class="fatherProgress">
+            <div class="sonProgress">.</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- div inical que o jogador escolhe o tema do jogo -->
+        <div class="tema-father">
+            <div class="tema-son">
+                <h1 class="h1tema">qual tema voce gostaria de aprender?</h1>
+                <div class="temas-options">
+                    <div data-op="pronouns" class="option"> <a href="artigos/pronomes.html"  rel="noopener noreferrer" style="text-decoration: none; color: white;">Pronouns</a></div>
+                    <div data-op="toBe" class="option"> <a href="artigos/toBe.html"  rel="noopener noreferrer" style="text-decoration: none; color: white;">Verb To Be</a></div>
+                </div> 
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Criado por <strong>Mateus</strong></p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/mateus75/" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/mateus073" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+            </a>
+        </div>
+    </footer>
+
+    <script src="scripts/menuFoter.js"></script>  
+</body>
+</html>
