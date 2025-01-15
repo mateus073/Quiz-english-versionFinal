@@ -30,21 +30,24 @@
 
 
 body {
-    background: linear-gradient(180deg, var(--preto), var(--cinza-medio));
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-/* css do menu ta no arquivo "menuFooter" */
+main {
+    background: linear-gradient(180deg, var(--preto), var(--cinza-medio));
 
+}
+
+/* css do menu ta no arquivo "menuFooter" */
 /* div pai do progresso */
 .barrProgress {
     display: block;
-    height: 24px;
+    /* height: 24px; */
     /*24 pq a borda oculpa 2 px em cima e 2 em baixo*/
-    margin: 10px;
+    margin: 20px;
 }
 
 /* div pai da barra de progresso */
@@ -56,9 +59,10 @@ body {
 }
 
 .sonProgress {
+    height: 20px;
     background-color: var(--verde);
     border-radius: 20px;
-    width: 1%;
+    width: 20%;
     transition: all 0.4s;
 }
 
@@ -68,12 +72,14 @@ body {
 
 
 
+/* incicio do css do corpo principal do jogo */
 .questionArea {
     display: flex;
+    padding: 1rem;
     height: 100%;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .instruction {
@@ -81,46 +87,70 @@ body {
     font-size: var(--font-mg);
     font-weight: 600;
     margin-top: 20px;
+    margin-bottom: 3rem;
 }
 
 
 .fraseATraduzir {
     color: var(--branco);
     font-size: var(--font-m);
-    border-bottom: solid 3px var(--azul-claro);
+    border-bottom: solid 1px var(--cinza-claro);
     padding: 5px;
     margin: 10px;
 }
 
-.areatraducao {
+/* div pai de onde ira ficar os itens arrastados  */
+.paiAreasTraducao {
     flex-wrap: wrap;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.3rem;
-    padding: 0.5rem;
+    /* gap: 0.3rem; */
+    padding: 0.3rem;
     margin-bottom: 2rem;
-    border-top: 2px solid var(--cinza-claro);
-    border-bottom: 2px solid var(--cinza-claro);
+    border-top: 4px solid var(--cinza-claro);
+    border-bottom: 4px solid var(--cinza-claro);
+}
+
+/* divs filhas onde o usuario ira possicionar as palavras  */
+.area {
+    font-size: var(--font-pp);
+    /* border-right: solid 1px white; */
+    /* border-left: solid 1px white; */
+    font-weight: 500;
+    padding: 7px;
+    color: white;
+    transition: all 0.3s;
+    min-height: 45px;
+    min-width: 60px;
+
 }
 
 
+
+/* div pai dos itens que serao arrastados  */
 .itens {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    border: solid 4px var(--cinza-claro);
+    min-width: 50%;
+    min-height: 5rem;
+    border-radius: 10px;
+    padding: 1rem;
     gap: 1rem;
 }
 
+
 .item {
     font-size: var(--font-pp);
-    font-weight: 500;
+    font-weight: 300;
     color: white;
-    border: solid 2px var(--cinza-claro);
-    border-radius: 15px;
-    padding: 1rem;
+    /* border: solid 2px var(--cinza-claro); */
+    border-radius: 10px;
+    padding: 0.5rem;
+    background-color: var(--azul-claro);
     transition: all 0.3s;
 }
 
@@ -161,4 +191,25 @@ body {
     .questionArea {
         gap: 2rem;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* classes usadas no js */
+/* muda a cor do item quando quando ele ta sendo arrastado */
+.arastouItem {
+    opacity: 0.4;
+}
+
+/* muda a cor da area quando eu passar o item por cima dela  */
+.hover {
+    background-color: rgba(0, 0, 0, 0.33);
 }

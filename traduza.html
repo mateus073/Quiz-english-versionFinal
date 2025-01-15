@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>traduza com arrasta e solta</title>
+    <title>traduza com arrasta e solta </title>
 </head>
 
 <body>
@@ -69,14 +69,15 @@
     </header>
 
 
-    <!-- div que contem a barra de progresso -->
-    <header class="barrProgress">
-        <div class="fatherProgress">
-            <div class="sonProgress">.</div>
-        </div>
-    </header>
-
+    
     <main>
+        <!-- div que contem a barra de progresso -->
+        <header class="barrProgress">
+            <div class="fatherProgress">
+                <div class="sonProgress"></div>
+            </div>
+        </header>
+        
         <!-- div inical que o jogador escolhe o tema do jogo -->
         <div class="tema-father">
             <div class="tema-son">
@@ -98,22 +99,22 @@
                 <p>fease pra voce traduzir. fease pra voce traduzir</p>
             </div>
 
-            <div class="areatraducao">
-                <div class="item">bla bala</div>
-                <div class="item">bam bam </div>
-                <div class="item">fuc fuc</div>
-                <div class="item">bla bala</div>
-                <div class="item">bam bam </div>
-                <div class="item">fuc fuc</div>
+            <div class="paiAreasTraducao">
+                <div class="area" data-name="a"> </div>
+                <div class="area" data-name="b"> </div>
+                <div class="area" data-name="c"> </div>
+                <div class="area" data-name="d"> </div>
+                <div class="area" data-name="e"> </div>
+                <div class="area" data-name="f"> </div>
             </div>
 
             <div class="itens">
-                <div data-opc="1" class="item">palavra</div>
-                <div data-opc="2" class="item">palavra</div>
-                <div data-opc="3" class="item">palavra</div>
-                <div data-opc="1" class="item">palavra</div>
-                <div data-opc="2" class="item">palavra</div>
-                <div data-opc="3" class="item">palavra</div>
+                <div draggable="true" class="item">palavra a</div>
+                <div draggable="true" class="item">pa b</div>
+                <div draggable="true" class="item">pavra c</div>
+                <div draggable="true" class="item">plavra d</div>
+                <div draggable="true" class="item">p e</div>
+                <div draggable="true" class="item">para f</div>
             </div>
 
             <div class="verificar">
@@ -165,8 +166,7 @@
             <source src="audios/genio.mp3" type="audio/mp3">
         </audio>
     </div>
-
+    <script src="scripts/traduzaDragAndDrop.js"></script>
     <script src="scripts/menuFoter.js"></script>
 </body>
-
 </html>
