@@ -20,11 +20,11 @@ const frasesEpalavras = [
         traduzida: [
             { palavra: "feliz", dataName: "plvDistratora" },
             { palavra: "jacare", dataName: "plvDistratora" },
-            { palavra: "e ai", dataName: "a" },
+            { palavra: "e ai?", dataName: "a" },
             { palavra: "beleza", dataName: "plvDistratora" },
-            { palavra: "tudo bem", dataName: "b" },
+            { palavra: "tudo bem?", dataName: "b" },
             { palavra: "sol", dataName: "plvDistratora" },
-            { palavra: "lambpada", dataName: "plvDistratora" }
+            { palavra: "lampada", dataName: "plvDistratora" }
         ]
     },
     {
@@ -132,3 +132,5 @@ const frasesEpalavras = [
         ]
     }
 ];
+
+

@@ -1,46 +1,57 @@
-/* EVENTOS EVENTOS EVENTOS EVENTOS EVENTOS */
 
 // variaveis usadas
 let arrayQuest = frasesEpalavras
-let indexQuest = 9
+let indexQuest = 1
 // console.log(frasesEpalavras)
 
 
-// funcoes responsavel pro atualizar e prencher a tela
+// COMECO DAS FUNCOES RESPONSAVEL POR ATUALIZAR A TELA
 
 // funcoes que passa os dados que ira  preencher a tela
-function obterDadosQuestao(indexQues, arrayQuest) {
-    let questVez = arrayQuest[indexQues] //pega a questao da vez
+function obterDadosQuestao(indexQues) {
+    let questVez = arrayQuest[indexQues] // pega a questao da vez
 
-    let txtTraduzirVez = questVez.frase // seleciona o text da vez 
-    let palavrasEDataname = questVez.traduzida // palavras e seus dataneme
-    let txtTraducao = questVez.traducao //  pega o texto traduzido da questao da vez
-    
-    // itens corretos, sera usado pra saber quntas divs areas devo criar e seu dataname
+    let txtTraduzirVez = questVez.frase         // seleciona o text da vez 
+    let palavrasEDataname = questVez.traduzida  // palavras e seus dataneme
+    let txtTraducao = questVez.traducao         //  pega o texto traduzido da questao da vez
+
+    // pego so os itens corretos, sera usado pra saber quntas divs areas devo criar e seu dataname
     let itensCorretos = palavrasEDataname.filter(item => item.dataName !== "plvDistratora")
-    
-    // ordenando em ordem alfabetica
-    let itensCorretosOrdenados = itensCorretos.sort((a,b) => {
-        if(a.dataName < b.dataName) return -1;
-        if(b.dataName < a.dataName) return 1;
+
+    // ordenando em ordem alfabetica pra poder prencher o dataname na sequecia correta
+    let itensCorretosOrdenados = itensCorretos.sort((a, b) => {
+        if (a.dataName < b.dataName) return -1;
+        if (b.dataName < a.dataName) return 1;
         return 0
     })
 
     atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados)
 }
-obterDadosQuestao(indexQuest, arrayQuest)
+obterDadosQuestao(indexQuest)// roda ela a primeira vez pra preencher a tela
 
 
-// funcao que recbe os dados de prencher a tela e atualiza a tela 
+/** funcao que recbe os dados de prencher a tela e atualiza a tela 
+ * 
+* prenche o paragrafo da frase a traduzir 
+*prenche as divs itens com o texto e dataname das palavras da vez 
+*cria as divs area que e onde irei arrastar os itens e soltar 
+*dados recebidos:
+* 
+ */
 function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados) {
     let elPraTraduzir = document.querySelector('.textPraTraduzir')
     let eldivsItens = document.querySelectorAll('.item')
     let elDivAreaPai = document.querySelector('.paiAreasTraducao')
 
+    // // limpa elementos antes de preenchelos novamente
+    elPraTraduzir.innerText = ''
+    elDivAreaPai.innerHTML = ''
+
+
     elPraTraduzir.textContent = txtTraduzirVez
-    
+
     // for pra as divs dos itens que serao arastados
-    for(let x = 0; x < eldivsItens.length; x++) {
+    for (let x = 0; x < eldivsItens.length; x++) {
         let txtItemVez = palavrasEDataname[x].palavra
         let dataName = palavrasEDataname[x].dataName
 
@@ -49,7 +60,7 @@ function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorre
     }
 
     // for pra criar e colocar dataname nas divs areas que ficara os itens arrastados 
-    for(let x = 0; x < itensCorretosOrdenados.length; x++) {
+    for (let x = 0; x < itensCorretosOrdenados.length; x++) {
         let dataname = itensCorretosOrdenados[x].dataName
 
         let newdiv = document.createElement('div')
@@ -57,25 +68,89 @@ function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorre
         newdiv.setAttribute('data-name', dataname)
 
         elDivAreaPai.appendChild(newdiv)
-        // console.log(dataname)
     }
-
-    console.log(itensCorretosOrdenados.length)
-    
 }
 
-// fim das funcoes relaciondas a prencher a tela
+/* FIM DAS FUNCOES RESPONSAVEL POR ATUALIZAR A TELA */
+
+
+/* COMEÇO DAS FUNCOES RESPONSAVEIS PELA LOGICA DO JOGO */
+
+/** funcao responsavel pela logica do jogo
+ * usa if pra saber se:
+ *  -todas as divs area foram preenchida com os itens 
+ *  -se o dataname da are e do item estao corretos
+ * se estiver tudo certo ele chama a funcao que vai atualizar a tela pra proxima rodada
+*/
+function sequeciaCorreta() {
+    let areas = document.querySelectorAll('.area')
+    let itens = document.querySelectorAll('.area .item')
+
+    let areaCorretaPreenchida = true //variavel de controle pra saber se as areas estao corretas e preenchidas 
+
+    //if pra saber se as arreas estao prenchidas
+    if (areas.length === itens.length) {
+        // atualiza cor do botao pra verde
+        document.querySelector('.proximaQst').style.backgroundColor = "#85c421"
+
+        areas.forEach(area => {
+            const areaName = area.getAttribute('data-name')
+            const item = area.querySelector('.item')
+            console.log('todas as areas foram preenchidas com itens')
+
+            // if pra saber se os dataName de areas e item esta errado
+            if (item) {
+                const itemName = item.getAttribute('data-name')
+
+                if (itemName !== areaName) {
+                    areaCorretaPreenchida = false
+                    console.log('sequencia esta errada')
+                }
+            }
+        })
+    } else { // else pra saber se nao foram preenchidas todas as areas 
+        document.querySelector('.proximaQst').style.backgroundColor = "#35454d"  // atualiza cor do botao pra cinza novamente
+        areaCorretaPreenchida = false
+
+        console.log('nem todas as areas foram preenchidas')
+    }
+
+    /** resultado final
+     * so cai nesse se todas as areas estiverem preenchidas
+     * se o dataname dos itens e das areas estiverem corrtos
+     */
+    if (areaCorretaPreenchida) {
+        // proximaQuest()
+        console.log('todas as areas foram pereenchidas, e seus datanames estao corretos')
+    }
+}
+
+// // funcao responsavel por passar pra proxaima questao
+// function proximaQuest() {
+//     document.querySelector('.proximaQst').addEventListener('click', () => {
+//         indexQuest++
+//         obterDadosQuestao(indexQuest)
+//     })
+
+
+// console.log('passo pra proxima questao')
+// }
 
 
 
 
+
+// FIM DAS FUNCOES RELACIONDAS A LOGICA DO JOGO
+
+
+
+/* EVENTOS DO EFEITO DE ARRASTA E SOLTA */
 
 // 1 eventos dos itens que irei arrastar e soltar
 document.querySelectorAll('.item').forEach(item => {
     item.addEventListener('dragstart', dragStart) //roda quando eu arrastar
     item.addEventListener('dragend', dragEnd) //roda quando eu soltar 
 })
-
 
 // 2 eventos da area onde irei soltar os items
 document.querySelectorAll('.area').forEach(area => {
@@ -84,92 +159,27 @@ document.querySelectorAll('.area').forEach(area => {
     area.addEventListener('drop', drop) // roda quando soltar o item na area
 })
 
-
 // 3 eventos da div inical onde estava meus itens, inclui a logica de poder dropar de volta os itens na div pai
 document.querySelector('.itens').addEventListener('dragover', dragOverAreaIncial)  // roda quando passa algo por cima dele 
 document.querySelector('.itens').addEventListener('dragleave', dragLeaveAreaIncial)  // roda quando to na area que posso soltar e saio dela 
 document.querySelector('.itens').addEventListener('drop', dropAreaIncial)  // roda quando soltar o item na area
 
-
-
-
-
-/* FUNCOES  FUNCOES  FUNCOES  FUNCOES  FUNCOES  FUNCOES */
-/*
-// funcoes responsavel pro atualizar e prencher a tela
-
-// funcoes que passa os dados que ira  preencher a tela
-function obterDadosQuestao(indexQues, arrayQuest) {
-    let questVez = arrayQuest[indexQues] //pega a questao da vez
-
-    let txtTraduzirVez = questVez.frase // seleciona o text da vez 
-    let palavrasEDataname = questVez.traduzida // palavras e seus dataneme
-    let txtTraducao = questVez.traducao //  pega o texto traduzido da questao da vez
-    
-    // itens corretos, sera usado pra saber quntas divs areas devo criar e seu dataname
-    let itensCorretos = palavrasEDataname.filter(item => item.dataName !== "plvDistratora")
-    
-    // ordenando em ordem alfabetica
-    let itensCorretosOrdenados = itensCorretos.sort((a,b) => {
-        if(a.dataName < b.dataName) return -1;
-        if(b.dataName < a.dataName) return 1;
-        return 0
-    })
-
-    atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados)
-}
-obterDadosQuestao(indexQuest, arrayQuest)
-
-
-// funcao que recbe os dados de prencher a tela e atualiza a tela 
-function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados) {
-    let elPraTraduzir = document.querySelector('.textPraTraduzir')
-    let eldivsItens = document.querySelectorAll('.item')
-    let elDivAreaPai = document.querySelector('.paiAreasTraducao')
-
-    elPraTraduzir.textContent = txtTraduzirVez
-    
-    // for pra as divs dos itens que serao arastados
-    for(let x = 0; x < eldivsItens.length; x++) {
-        let txtItemVez = palavrasEDataname[x].palavra
-        let dataName = palavrasEDataname[x].dataName
-
-        eldivsItens[x].innerText = txtItemVez
-        eldivsItens[x].setAttribute('data-name', dataName)
-    }
-
-    // for pra criar e colocar dataname nas divs areas que ficara os itens arrastados 
-    for(let x = 0; x < itensCorretosOrdenados.length; x++) {
-        let dataname = itensCorretosOrdenados[x].dataName
-
-        let newdiv = document.createElement('div')
-        newdiv.classList.add('area')
-        newdiv.setAttribute('data-name', dataname)
-
-        elDivAreaPai.appendChild(newdiv)
-        // console.log(dataname)
-    }
-
-    console.log(itensCorretosOrdenados.length)
-    
-}
-
-// fim das funcoes relaciondas a prencher a tela
-
-*/
+/* FIM DOS EVENTOS DO EFEITO DE ARRASTA E SOLTA */
 
 
 
 
 
+
+/* FUNCOES DO EFEITO DE ARRASTA E SOLTA */
 
 /* 1 FUNCOES RELACIONADAS AO ITEM */
-// funcao que roda quando eu arrastar meu item
+// 1 funcao que roda quando eu arrastar meu item
 function dragStart(e) {
     e.currentTarget.classList.add('arastouItem')
 }
 
-// funcao que roda quando eu soltar meu item
+// 1 funcao que roda quando eu soltar meu item
 function dragEnd(e) {
     e.currentTarget.classList.remove('arastouItem')
 }
@@ -180,7 +190,7 @@ function dragEnd(e) {
 
 /* 2 FUNCOES RELACIONADAS A AREA  */
 
-// evento que roda quando passar algo por cima dele no caso o item 
+//2 evento que roda quando passar algo por cima dele no caso o item 
 function dragOver(e) {
     // so libera pra drop, ativa efeito de mudar de cor se nao ter nemhum item na area que quero soltar
     if (e.currentTarget.querySelector('.item') === null) {
@@ -189,13 +199,13 @@ function dragOver(e) {
     }
 }
 
-// evento que roda quando to em uma area que posso soltar e saio dela 
+//2 evento que roda quando to em uma area que posso soltar e saio dela 
 function dragLeave(e) {
     e.currentTarget.classList.remove('hover') // retira o efeito de cor da area quando o item sair de cima dela 
     // console.log('saio da area dropavel')
 }
 
-/*evento quando eu soltar algo
+/*2 evento quando eu soltar algo
 *  
 *  porem ele so roda se eu liberar no dragover o drop
 *  
@@ -212,8 +222,11 @@ function drop(e) {
     // verificaçao pra saber se ja existe algum item dentro da area que to querendo soltar o item
     if (e.currentTarget.querySelector('.item') === null) {
         e.currentTarget.appendChild(itemSendoMovido)
+
+        sequeciaCorreta()
     }
 }
+
 
 
 
@@ -236,10 +249,11 @@ function dropAreaIncial(e) {
     let itemSenodoMovido = document.querySelector('.item.arastouItem')
 
     e.currentTarget.appendChild(itemSenodoMovido)
+    sequeciaCorreta()
     // console.log('soltou em cima  ')
 }
 
-
+/* FIM DAS FUNCOES DO EFEITO DE ARRASTA E SOLTA */
 
 
 
