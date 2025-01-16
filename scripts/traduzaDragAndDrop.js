@@ -1,4 +1,75 @@
 /* EVENTOS EVENTOS EVENTOS EVENTOS EVENTOS */
+
+// variaveis usadas
+let arrayQuest = frasesEpalavras
+let indexQuest = 9
+// console.log(frasesEpalavras)
+
+
+// funcoes responsavel pro atualizar e prencher a tela
+
+// funcoes que passa os dados que ira  preencher a tela
+function obterDadosQuestao(indexQues, arrayQuest) {
+    let questVez = arrayQuest[indexQues] //pega a questao da vez
+
+    let txtTraduzirVez = questVez.frase // seleciona o text da vez 
+    let palavrasEDataname = questVez.traduzida // palavras e seus dataneme
+    let txtTraducao = questVez.traducao //  pega o texto traduzido da questao da vez
+    
+    // itens corretos, sera usado pra saber quntas divs areas devo criar e seu dataname
+    let itensCorretos = palavrasEDataname.filter(item => item.dataName !== "plvDistratora")
+    
+    // ordenando em ordem alfabetica
+    let itensCorretosOrdenados = itensCorretos.sort((a,b) => {
+        if(a.dataName < b.dataName) return -1;
+        if(b.dataName < a.dataName) return 1;
+        return 0
+    })
+
+    atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados)
+}
+obterDadosQuestao(indexQuest, arrayQuest)
+
+
+// funcao que recbe os dados de prencher a tela e atualiza a tela 
+function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados) {
+    let elPraTraduzir = document.querySelector('.textPraTraduzir')
+    let eldivsItens = document.querySelectorAll('.item')
+    let elDivAreaPai = document.querySelector('.paiAreasTraducao')
+
+    elPraTraduzir.textContent = txtTraduzirVez
+    
+    // for pra as divs dos itens que serao arastados
+    for(let x = 0; x < eldivsItens.length; x++) {
+        let txtItemVez = palavrasEDataname[x].palavra
+        let dataName = palavrasEDataname[x].dataName
+
+        eldivsItens[x].innerText = txtItemVez
+        eldivsItens[x].setAttribute('data-name', dataName)
+    }
+
+    // for pra criar e colocar dataname nas divs areas que ficara os itens arrastados 
+    for(let x = 0; x < itensCorretosOrdenados.length; x++) {
+        let dataname = itensCorretosOrdenados[x].dataName
+
+        let newdiv = document.createElement('div')
+        newdiv.classList.add('area')
+        newdiv.setAttribute('data-name', dataname)
+
+        elDivAreaPai.appendChild(newdiv)
+        // console.log(dataname)
+    }
+
+    console.log(itensCorretosOrdenados.length)
+    
+}
+
+// fim das funcoes relaciondas a prencher a tela
+
+
+
+
+
 // 1 eventos dos itens que irei arrastar e soltar
 document.querySelectorAll('.item').forEach(item => {
     item.addEventListener('dragstart', dragStart) //roda quando eu arrastar
@@ -24,6 +95,73 @@ document.querySelector('.itens').addEventListener('drop', dropAreaIncial)  // ro
 
 
 /* FUNCOES  FUNCOES  FUNCOES  FUNCOES  FUNCOES  FUNCOES */
+/*
+// funcoes responsavel pro atualizar e prencher a tela
+
+// funcoes que passa os dados que ira  preencher a tela
+function obterDadosQuestao(indexQues, arrayQuest) {
+    let questVez = arrayQuest[indexQues] //pega a questao da vez
+
+    let txtTraduzirVez = questVez.frase // seleciona o text da vez 
+    let palavrasEDataname = questVez.traduzida // palavras e seus dataneme
+    let txtTraducao = questVez.traducao //  pega o texto traduzido da questao da vez
+    
+    // itens corretos, sera usado pra saber quntas divs areas devo criar e seu dataname
+    let itensCorretos = palavrasEDataname.filter(item => item.dataName !== "plvDistratora")
+    
+    // ordenando em ordem alfabetica
+    let itensCorretosOrdenados = itensCorretos.sort((a,b) => {
+        if(a.dataName < b.dataName) return -1;
+        if(b.dataName < a.dataName) return 1;
+        return 0
+    })
+
+    atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados)
+}
+obterDadosQuestao(indexQuest, arrayQuest)
+
+
+// funcao que recbe os dados de prencher a tela e atualiza a tela 
+function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados) {
+    let elPraTraduzir = document.querySelector('.textPraTraduzir')
+    let eldivsItens = document.querySelectorAll('.item')
+    let elDivAreaPai = document.querySelector('.paiAreasTraducao')
+
+    elPraTraduzir.textContent = txtTraduzirVez
+    
+    // for pra as divs dos itens que serao arastados
+    for(let x = 0; x < eldivsItens.length; x++) {
+        let txtItemVez = palavrasEDataname[x].palavra
+        let dataName = palavrasEDataname[x].dataName
+
+        eldivsItens[x].innerText = txtItemVez
+        eldivsItens[x].setAttribute('data-name', dataName)
+    }
+
+    // for pra criar e colocar dataname nas divs areas que ficara os itens arrastados 
+    for(let x = 0; x < itensCorretosOrdenados.length; x++) {
+        let dataname = itensCorretosOrdenados[x].dataName
+
+        let newdiv = document.createElement('div')
+        newdiv.classList.add('area')
+        newdiv.setAttribute('data-name', dataname)
+
+        elDivAreaPai.appendChild(newdiv)
+        // console.log(dataname)
+    }
+
+    console.log(itensCorretosOrdenados.length)
+    
+}
+
+// fim das funcoes relaciondas a prencher a tela
+
+*/
+
+
+
+
+
 
 /* 1 FUNCOES RELACIONADAS AO ITEM */
 // funcao que roda quando eu arrastar meu item
@@ -93,11 +231,10 @@ function dragLeaveAreaIncial(e) {
     // console.log('passou tirou de cima ')
 }
 
-
 function dropAreaIncial(e) {
     e.currentTarget.classList.remove('hover')
     let itemSenodoMovido = document.querySelector('.item.arastouItem')
-    
+
     e.currentTarget.appendChild(itemSenodoMovido)
     // console.log('soltou em cima  ')
 }

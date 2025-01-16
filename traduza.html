@@ -96,25 +96,21 @@
             <div class="instruction">Traduza esta frase:</div>
 
             <div class="fraseATraduzir">
-                <p>fease pra voce traduzir. fease pra voce traduzir</p>
+                <p class="textPraTraduzir">frase pra voce traduzir</p>
             </div>
 
             <div class="paiAreasTraducao">
-                <div class="area" data-name="a"> </div>
-                <div class="area" data-name="b"> </div>
-                <div class="area" data-name="c"> </div>
-                <div class="area" data-name="d"> </div>
-                <div class="area" data-name="e"> </div>
-                <div class="area" data-name="f"> </div>
             </div>
 
+            <!-- essas divs sao prenchida no js e altera o dataname -->
             <div class="itens">
-                <div draggable="true" class="item">palavra a</div>
-                <div draggable="true" class="item">pa b</div>
-                <div draggable="true" class="item">pavra c</div>
-                <div draggable="true" class="item">plavra d</div>
-                <div draggable="true" class="item">p e</div>
-                <div draggable="true" class="item">para f</div>
+                <div draggable="true" class="item" data-name="a"> a </div>
+                <div draggable="true" class="item" data-name="b"> b </div>
+                <div draggable="true" class="item" data-name="c"> c </div>
+                <div draggable="true" class="item" data-name="d"> d </div>
+                <div draggable="true" class="item" data-name="e"> e </div>
+                <div draggable="true" class="item" data-name="f"> f </div>
+                <div draggable="true" class="item" data-name="g"> g </div>
             </div>
 
             <div class="verificar">
@@ -136,7 +132,6 @@
                     <button class="home"><a href="index.html"
                             style="text-decoration: none; color: #ffffff;">Home</a></button>
                 </div>
-
             </div>
         </div>
     </main>
@@ -166,6 +161,7 @@
             <source src="audios/genio.mp3" type="audio/mp3">
         </audio>
     </div>
+    <script src="scripts/aryFrasesTraduzir.js"></script>
     <script src="scripts/traduzaDragAndDrop.js"></script>
     <script src="scripts/menuFoter.js"></script>
 </body>
