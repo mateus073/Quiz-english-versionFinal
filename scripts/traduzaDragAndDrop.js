@@ -1,9 +1,8 @@
-
 // variaveis usadas
 let arrayQuest = frasesEpalavras
 let indexQuest = 1
+const btnProximoQuest = document.querySelector('.proximaQst');
 // console.log(frasesEpalavras)
-
 
 // COMECO DAS FUNCOES RESPONSAVEL POR ATUALIZAR A TELA
 
@@ -40,23 +39,34 @@ obterDadosQuestao(indexQuest)// roda ela a primeira vez pra preencher a tela
  */
 function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados) {
     let elPraTraduzir = document.querySelector('.textPraTraduzir')
-    let eldivsItens = document.querySelectorAll('.item')
+    // let eldivsItens = document.querySelectorAll('.item')
+    let paiItens = document.querySelector('.itens')
     let elDivAreaPai = document.querySelector('.paiAreasTraducao')
 
     // // limpa elementos antes de preenchelos novamente
     elPraTraduzir.innerText = ''
     elDivAreaPai.innerHTML = ''
 
+    // Loop para limpar apenas as divs com a classe 'item'
+    let divsItens = paiItens.querySelectorAll('.item'); // Seleciona as divs 'item'
+    divsItens.forEach(div => div.remove()); // Remove cada div individualmente
+
 
     elPraTraduzir.textContent = txtTraduzirVez
 
     // for pra as divs dos itens que serao arastados
-    for (let x = 0; x < eldivsItens.length; x++) {
+    for (let x = 0; x < palavrasEDataname.length; x++) {
+        let newdivItem = document.createElement('div')
+
         let txtItemVez = palavrasEDataname[x].palavra
         let dataName = palavrasEDataname[x].dataName
 
-        eldivsItens[x].innerText = txtItemVez
-        eldivsItens[x].setAttribute('data-name', dataName)
+        newdivItem.classList.add('item')
+        newdivItem.setAttribute('data-name', dataName)
+        newdivItem.setAttribute('draggable', 'true')
+        newdivItem.innerText = txtItemVez
+
+        paiItens.appendChild(newdivItem)
     }
 
     // for pra criar e colocar dataname nas divs areas que ficara os itens arrastados 
@@ -91,7 +101,10 @@ function sequeciaCorreta() {
     //if pra saber se as arreas estao prenchidas
     if (areas.length === itens.length) {
         // atualiza cor do botao pra verde
-        document.querySelector('.proximaQst').style.backgroundColor = "#85c421"
+        btnProximoQuest.style.backgroundColor = "#85c421"
+        btnProximoQuest.addEventListener('click', () => {
+            proximaQuest();
+        });
 
         areas.forEach(area => {
             const areaName = area.getAttribute('data-name')
@@ -109,10 +122,9 @@ function sequeciaCorreta() {
             }
         })
     } else { // else pra saber se nao foram preenchidas todas as areas 
-        document.querySelector('.proximaQst').style.backgroundColor = "#35454d"  // atualiza cor do botao pra cinza novamente
+        btnProximoQuest.style.backgroundColor = "#35454d"  // atualiza cor do botao pra cinza novamente
         areaCorretaPreenchida = false
 
-        console.log('nem todas as areas foram preenchidas')
     }
 
     /** resultado final
@@ -132,10 +144,24 @@ function sequeciaCorreta() {
 //         obterDadosQuestao(indexQuest)
 //     })
 
-
 // console.log('passo pra proxima questao')
 // }
 
+// Função responsável por passar para a próxima questão
+function proximaQuest() {
+    // Incrementa o índice da questão
+    indexQuest++;
+
+    // Verifica se ainda há mais questões no array
+    if (indexQuest < arrayQuest.length) {
+        // Obtém os dados da próxima questão
+        obterDadosQuestao(indexQuest);
+        console.log('Passou para a próxima questão:', indexQuest);
+    } else {
+        // Se não houver mais questões, pode exibir uma mensagem ou reiniciar
+        console.log('Fim do jogo! Parabéns!');
+    }
+}
 
 
 
