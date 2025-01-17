@@ -15,6 +15,32 @@ const frasesEpalavras = [
         ]
     },
     {
+        frase: "How old are you?",
+        traducao: "Quantos anos você tem?",
+        traduzida: [
+            { palavra: "anos", dataName: "b" },
+            { palavra: "novo", dataName: "plvDistratora" },
+            { palavra: "tem?", dataName: "d" },
+            { palavra: "Quantos", dataName: "a" },
+            { palavra: "idade", dataName: "plvDistratora" },
+            { palavra: "você", dataName: "c" },
+            { palavra: "velho", dataName: "plvDistratora" }
+        ]
+    },
+    {
+        frase: "Thank you very much.",
+        traducao: "Muito obrigado.",
+        traduzida: [
+            { palavra: "Muito", dataName: "a" },
+            { palavra: "por", dataName: "plvDistratora" },
+            { palavra: "favor", dataName: "plvDistratora" },
+            { palavra: "sempre", dataName: "plvDistratora" },
+            { palavra: "obrigado.", dataName: "b" },
+            { palavra: "nada", dataName: "plvDistratora" },
+            { palavra: "tudo", dataName: "plvDistratora" }
+        ]
+    },
+    {
         frase: "What's up?",
         traducao: "E aí? Tudo bem?",
         traduzida: [
@@ -80,19 +106,6 @@ const frasesEpalavras = [
         ]
     },
     {
-        frase: "How old are you?",
-        traducao: "Quantos anos você tem?",
-        traduzida: [
-            { palavra: "anos", dataName: "b" },
-            { palavra: "novo", dataName: "plvDistratora" },
-            { palavra: "tem?", dataName: "d" },
-            { palavra: "Quantos", dataName: "a" },
-            { palavra: "idade", dataName: "plvDistratora" },
-            { palavra: "você", dataName: "c" },
-            { palavra: "velho", dataName: "plvDistratora" }
-        ]
-    },
-    {
         frase: "Can I help you?",
         traducao: "Posso te ajudar?",
         traduzida: [
@@ -103,19 +116,6 @@ const frasesEpalavras = [
             { palavra: "te", dataName: "b" },
             { palavra: "não", dataName: "plvDistratora" },
             { palavra: "nunca", dataName: "plvDistratora" }
-        ]
-    },
-    {
-        frase: "Thank you very much.",
-        traducao: "Muito obrigado.",
-        traduzida: [
-            { palavra: "Muito", dataName: "a" },
-            { palavra: "por", dataName: "plvDistratora" },
-            { palavra: "favor", dataName: "plvDistratora" },
-            { palavra: "sempre", dataName: "plvDistratora" },
-            { palavra: "obrigado.", dataName: "b" },
-            { palavra: "nada", dataName: "plvDistratora" },
-            { palavra: "tudo", dataName: "plvDistratora" }
         ]
     },
     {
