@@ -6,6 +6,8 @@ const btnProximoQuest = document.querySelector('.proximaQst');
 
 // COMECO DAS FUNCOES RESPONSAVEL POR ATUALIZAR A TELA
 
+
+
 // funcoes que passa os dados que ira  preencher a tela
 function obterDadosQuestao(indexQues) {
     let questVez = arrayQuest[indexQues] // pega a questao da vez
@@ -29,6 +31,7 @@ function obterDadosQuestao(indexQues) {
 obterDadosQuestao(indexQuest)// roda ela a primeira vez pra preencher a tela
 
 
+
 /** funcao que recbe os dados de prencher a tela e atualiza a tela 
  * 
 * prenche o paragrafo da frase a traduzir 
@@ -50,7 +53,6 @@ function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorre
     // Loop para limpar apenas as divs com a classe 'item'
     let divsItens = paiItens.querySelectorAll('.item'); // Seleciona as divs 'item'
     divsItens.forEach(div => div.remove()); // Remove cada div individualmente
-
 
     elPraTraduzir.textContent = txtTraduzirVez
 
@@ -82,6 +84,7 @@ function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorre
 }
 
 /* FIM DAS FUNCOES RESPONSAVEL POR ATUALIZAR A TELA */
+
 
 
 /* COMEÇO DAS FUNCOES RESPONSAVEIS PELA LOGICA DO JOGO */
@@ -132,10 +135,11 @@ function sequeciaCorreta() {
      * se o dataname dos itens e das areas estiverem corrtos
      */
     if (areaCorretaPreenchida) {
-        // proximaQuest()
         console.log('todas as areas foram pereenchidas, e seus datanames estao corretos')
     }
 }
+
+
 
 // // funcao responsavel por passar pra proxaima questao
 // function proximaQuest() {
@@ -151,6 +155,8 @@ function sequeciaCorreta() {
 function proximaQuest() {
     // Incrementa o índice da questão
     indexQuest++;
+    btnProximoQuest.style.backgroundColor = "#35454d" // deixa o botao de proximo cinza apos passar pra proxima qeustao
+    
 
     // Verifica se ainda há mais questões no array
     if (indexQuest < arrayQuest.length) {
@@ -161,12 +167,24 @@ function proximaQuest() {
         // Se não houver mais questões, pode exibir uma mensagem ou reiniciar
         console.log('Fim do jogo! Parabéns!');
     }
+    // 1 eventos dos itens que irei arrastar e soltar
+    document.querySelectorAll('.item').forEach(item => {
+        item.addEventListener('dragstart', dragStart) //roda quando eu arrastar
+        item.addEventListener('dragend', dragEnd) //roda quando eu soltar 
+    })
+
+    // 2 eventos da area onde irei soltar os items
+    document.querySelectorAll('.area').forEach(area => {
+        area.addEventListener('dragover', dragOver) // roda quando passa algo por cima dele 
+        area.addEventListener('dragleave', dragLeave) // roda quando to na area que posso soltar e saio dela 
+        area.addEventListener('drop', drop) // roda quando soltar o item na area
+    })
+
 }
 
-
-
-
 // FIM DAS FUNCOES RELACIONDAS A LOGICA DO JOGO
+
+
 
 
 
@@ -209,8 +227,6 @@ function dragStart(e) {
 function dragEnd(e) {
     e.currentTarget.classList.remove('arastouItem')
 }
-
-
 
 
 
