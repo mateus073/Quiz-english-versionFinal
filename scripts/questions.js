@@ -1,5 +1,5 @@
 // pronomes pessois (personal pronous)
-let questPronomes = [
+const questPronomes = [
     {
         question: "___ am a doctor. ",
         traduction: "(__ sou um médico.)",
@@ -125,7 +125,7 @@ let questPronomes = [
 
 
 //  verbo to be
-let questToBe = [
+const questToBe = [
     {
         question: "I ___ a student. ",
         traduction: "(Eu sou um estudante.)",
@@ -253,7 +253,7 @@ let questToBe = [
 
 
 // frases simples
-let questSimplePhrases = [
+const questSimplePhrases = [
     {
         question: "Good morning! How ___ you?",
         traduction: "(Bom dia! Como ___ você?)",
@@ -377,12 +377,7 @@ let questSimplePhrases = [
 ];
 
 
-
-
-
-
-
-let questNumber =[
+const questNumber =[
     {
         question: "What is the word for the number 1? (Qual é a palavra para o número 1?)",
         traduction: "",

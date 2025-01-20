@@ -19,35 +19,25 @@
 }
 
 
-.tema-father {
-    display: none;
-}
-
-.fatherResult {
-    display: none;
-}
 
 
 
 body {
+    background: linear-gradient(180deg, var(--preto), var(--cinza-medio));
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-main {
-    background: linear-gradient(180deg, var(--preto), var(--cinza-medio));
-
-}
 
 /* css do menu ta no arquivo "menuFooter" */
 /* div pai do progresso */
 .barrProgress {
-    display: block;
+    display: none;
     /* height: 24px; */
     /*24 pq a borda oculpa 2 px em cima e 2 em baixo*/
-    margin: 20px;
+    margin: 10px;
 }
 
 /* div pai da barra de progresso */
@@ -62,7 +52,7 @@ main {
     height: 20px;
     background-color: var(--verde);
     border-radius: 20px;
-    width: 20%;
+    width: 10%;
     transition: all 0.4s;
 }
 
@@ -72,14 +62,71 @@ main {
 
 
 
+
+/* css da div que escolhe o tema do jogo */
+/* pai da div opçoes */
+.tema-father {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* filha do div das opçoes */
+.tema-son {
+    /* border: solid 3px var(--cinza-claro); */
+    background: linear-gradient(360deg, var(--azul-medio), var(--cinza-medio));
+    filter: drop-shadow(1px 1px 4px var(--cinza-forte));
+    border-radius: 20px;
+    padding: 2.5rem;
+    background-color: var(--cinza-forte);
+}
+
+/* div pai das opçoes */
+.temas-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+/* titulo do tema */
+.h1tema {
+    color: white;
+    font-size: var(--font-g);
+    margin-bottom: 2rem;
+}
+
+/* opçoes */
+.option {
+    color: white;
+    font-size: var(--font-m);
+    border: solid 2px var(--cinza-claro);
+    box-shadow: 2px 2px 2px var(--cinza-forte);
+    border-radius: 20px;
+    width: 100%;
+    padding: 1rem;
+    transition: all 0.5s;
+}
+
+/* efeito pra respostas e para as opçoes de tema */
+.rOption:hover,
+.option:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 6px var(--cinza-forte);
+}
+
+
 /* incicio do css do corpo principal do jogo */
 .questionArea {
-    display: flex;
+    display: none;
     padding: 1rem;
     height: 100%;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .instruction {
@@ -212,4 +259,19 @@ main {
 /* muda a cor da area quando eu passar o item por cima dela  */
 .hover {
     background-color: rgba(0, 0, 0, 0.33);
+}
+
+
+
+
+.tema-father {
+    display: flex;
+}
+
+.fatherResult {
+    display: none;
+}
+
+.questionArea {
+    display: none;
 }

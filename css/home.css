@@ -49,7 +49,7 @@ body {
 
 .h2efeito {
     color: var(--cinza-medio);
-    font-size: 60pt;
+    font-size: 50pt;
     font-family: var(--font-titulo2);
     font-weight: 650;
 }
@@ -70,14 +70,14 @@ body {
 
 .dbtntex button {
     display: none;
-    padding: 13px;
-    font-size: var(--font-p);
+    padding: 0.8rem;
+    font-size: var(--font-pp);
     font-weight: 800;
     background: linear-gradient(160deg, var(--preto), var(--cinza-forte), var(--azul-medio));
     border: none;
     border-radius: 30px;
     color: var(--branco);
-    filter: drop-shadow(1px 1px 2px var(--azul-claro));
+    /* filter: drop-shadow(1px 1px 1px var(--azul-claro)); */
 }
 
 
@@ -110,18 +110,25 @@ body {
     font-size: var(--font-p);
     width: 350px;
     text-align: center;
-    color: var(--azul-claro);
+    color: var(--branco);
 }
 
 
+.btnInic {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .verULtimaPt button {
-    filter: drop-shadow(1px 1px 1px var(--azul-claro));
-    width: 350px;
-    padding: 15px;
+    /* filter: drop-shadow(1px 1px 1px var(--azul-claro)); */
+    width: 40%;
+    padding: 0.8rem;
     border: none;
     border-radius: 30px;
-    font-size: var(--font-p);
+    font-size: var(--font-pp);
     font-weight: 600;
     color: var(--branco);
     background: linear-gradient(160deg, var(--preto), var(--cinza-forte), var(--azul-medio));
@@ -148,7 +155,7 @@ body {
     padding: 12px;
     font-size: var(--font-m);
     background: linear-gradient(160deg, var(--azul-forte), var(--azul-claro));
-    filter: drop-shadow(1px 1px 2px var(--azul-claro));
+    /* filter: drop-shadow(1px 1px 2px var(--azul-claro)); */
     color: var(--branco);
     font-weight: 500;
     transition: all 0.5s;
@@ -167,6 +174,28 @@ body {
 
 
 /* main2 */
+
+/* aqui vai ficar o css do baner */
+.banerJogos {
+    margin: 2rem 1rem;
+    width: 100%;
+    background-color: var(--azul-claro);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dBaner {
+    width: 90%;
+    background-color: #142240;
+    height: 300px;
+    padding: 1rem;
+}
+
+.dBaner img {
+    width: 100%;
+    height: 100%;
+}
 
 .textorint {
     margin-top: 3rem;
@@ -345,7 +374,6 @@ footer p {
 
 
     .verULtimaPt button {
-        width: 250px;
         padding: 15px;
     }
 

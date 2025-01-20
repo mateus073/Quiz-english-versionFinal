@@ -1,43 +1,80 @@
-// variaveis usadas
-let arrayQuest = frasesEpalavras
-let indexQuest = 0
+// Variáveis usadas
+let arrayQuest = null;  // A variável global que armazenará o array de questões
+let indexQuest = 0;
 const btnProximoQuest = document.querySelector('.proximaQst');
-// console.log(frasesEpalavras)
 
-// COMECO DAS FUNCOES RESPONSAVEL POR ATUALIZAR A TELA
+const dbarProgress = document.querySelector('.barrProgress'); // Barra de progresso
+const menu = document.querySelector('.cabecalho'); // menu mob
+let dQuest = document.querySelector('.questionArea'); // Área das questões
+let dResult = document.querySelector('.fatherResult'); // Contêiner do resultado final
+const dTema = document.querySelector('.tema-father'); // Tema
 
 
+// COMEÇO DAS FUNÇÕES RESPONSÁVEIS POR ATUALIZAR A TELA
+// Adiciona evento de clique nas opções de tema
+// Para cada elemento com a classe 'option', adiciona um ouvinte de evento que chama a função 'tema' ao ser clicado.
+document.querySelectorAll('.option').forEach(item => {
+    item.addEventListener('click', tema);
+});
 
+// Define o tema a ser trabalhado
+function tema(e) {
+    // Obtém o atributo 'data-op' do elemento clicado para identificar o tema selecionado
+    let dataOpTema = e.target.getAttribute('data-op');
 
-/** Função principal para obter os dados da questão atual e passa pra funcao que atualiza a tela
+    if (dataOpTema) {
+        // Oculta o contêiner de seleção de temas e exibe as áreas de perguntas e barra de progresso
+        dTema.style.display = "none";
+        menu.style.display = "none";
+        dQuest.style.display = "flex";
+        dbarProgress.style.display = "flex";
+        console.log(dataOpTema);
+    }
+
+    // Verifica qual tema foi selecionado e define o array de questões correspondente
+    if (dataOpTema === "traduzaFrasesAleatorias") {
+        arrayQuest = traduzaFrasesAleatorias;
+    } else if (dataOpTema === "traduzaPNdemonstrativos") {
+        arrayQuest = traduzaPNdemonstrativos;
+    } else if (dataOpTema === "traduzaPNinterrogativos") {
+        arrayQuest = traduzaPNinterrogativos;
+    } else if (dataOpTema === "traduzaToBe") {
+        arrayQuest = traduzaToBe;
+    }
+
+    // Atualiza a tela com as questões do tema selecionado
+    obterDadosQuestao(arrayQuest);
+    console.log(arrayQuest);
+}
+
+/** Função principal para obter os dados da questão atual e passar para a função que atualiza a tela
  * Obtém os dados da questão atual com base no índice fornecido e os utiliza para atualizar a interface do jogo.
  * 
- * @param {number} indexQues - Índice da questão no array `arrayQuest`.
+ * @param {Array} newarrayQuest - Array de questões a ser utilizado.
  */
-function obterDadosQuestao(indexQues) {
-    let questVez = arrayQuest[indexQues] // Seleciona a questão atual
+function obterDadosQuestao(newarrayQuest) {
+    let questVez = newarrayQuest[indexQuest]; // Seleciona a questão atual
 
     // Extração de dados da questão
-    let txtTraduzirVez = questVez.frase         // seleciona o text da vez 
-    let palavrasEDataname = questVez.traduzida  // palavras e seus dataneme
-    let txtTraducao = questVez.traducao         //  pega o texto traduzido da questao da vez
+    let txtTraduzirVez = questVez.frase;         // seleciona o texto da vez 
+    let palavrasEDataname = questVez.traduzida;  // palavras e seus data-name
+    let txtTraducao = questVez.traducao;         // pega o texto traduzido da questão da vez
 
     // Filtra apenas os itens corretos (excluindo palavras distratoras)
-    let itensCorretos = palavrasEDataname.filter(item => item.dataName !== "plvDistratora")
+    let itensCorretos = palavrasEDataname.filter(item => item.dataName !== "plvDistratora");
 
-    // ordenando em ordem alfabetica pra poder prencher o dataname na sequecia correta
+    // Ordenando em ordem alfabética para poder preencher o data-name na sequência correta
     let itensCorretosOrdenados = itensCorretos.sort((a, b) => {
         if (a.dataName < b.dataName) return -1;
         if (b.dataName < a.dataName) return 1;
-        return 0
-    })
+        return 0;
+    });
 
     // Atualiza a tela com os dados processados
-    atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados)
+    atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados);
 }
-
-// Executa a função pela primeira vez para exibir a primeira questão
-obterDadosQuestao(indexQuest)// roda ela a primeira vez pra preencher a tela
+// // Executa a função pela primeira vez para exibir a primeira questão
+// obterDadosQuestao(indexQuest)// roda ela a primeira vez pra preencher a tela
 
 
 
@@ -127,12 +164,12 @@ function sequeciaCorreta() {
         btnProximoQuest.style.backgroundColor = "#85c421"; // Atualiza a cor do botão para verde
         btnProximoQuest.removeEventListener('click', handleProximaQuest); // Remove qualquer evento de clique previamente registrado para evitar múltiplos disparos
         btnProximoQuest.addEventListener('click', handleProximaQuest); // Adiciona o evento de clique ao botão
+        console.log('todas as áreas foram preenchidas com itens');
 
         // Verifica se os itens nas áreas têm os dataNames corretos
         areas.forEach(area => {
             const areaName = area.getAttribute('data-name'); // Data-name da área
             const item = area.querySelector('.item'); // Pega os itens dentro da área
-            console.log('todas as áreas foram preenchidas com itens');
 
 
             if (item) {
@@ -178,23 +215,15 @@ function proximaQuest() {
         console.log('Passou para a próxima questão:', indexQuest);
         // chamo a funcao que vai atulalizar a barra de progresso
 
-        // Atualiza eventos de arrastar e soltar
-        // 1 eventos dos itens que irei arrastar e soltar
-        document.querySelectorAll('.item').forEach(item => {
-            item.addEventListener('dragstart', dragStart) //roda quando eu arrastar
-            item.addEventListener('dragend', dragEnd) //roda quando eu soltar 
-        })
-
-        // 2 eventos da area onde irei soltar os items
-        document.querySelectorAll('.area').forEach(area => {
-            area.addEventListener('dragover', dragOver) // roda quando passa algo por cima dele 
-            area.addEventListener('dragleave', dragLeave) // roda quando to na area que posso soltar e saio dela 
-            area.addEventListener('drop', drop) // roda quando soltar o item na area
-        })
     } else {
         console.log('Fim do jogo! Parabéns!');
         // chama a funcao que vai fechar a div do jogo e vai exibir a div de resultados
+        resultadoFinal()
     }
+}
+
+function resultadoFinal() {
+
 }
 
 // FIM DAS FUNCOES RELACIONDAS A LOGICA DO JOGO
@@ -270,7 +299,7 @@ function dragLeave(e) {
 *  vou usar essa class pra pegalo ate pq ela e retirada dele quando eu o soltar 
 */
 function drop(e) {
-    console.trace()
+    // console.trace()
     e.currentTarget.classList.remove('hover') // retira o efeito de cor da area quando soltar o item nela
 
     // pego o item que ta sendo movido OBS: essa calss arrastou item so existe quando ele ta sendo arrastado
@@ -315,33 +344,33 @@ function dropAreaIncial(e) {
 
 
 
-/* passo a passo pro arrasta e soltar 
-*  
+/* passo a passo pro arrasta e soltar
+*
 *  primeiro preciso entender a difenrenca do .target pro e.currenttarget
 
 *  passo a passo
 *  1 colocar o draggable = true no elemento html pra poder arrastalo
 
 *  2 tratar dos itens que irei arrasta, definir acontecimentos de:
-*   - arrasta, que no caso e dar um opacity menor nele 
-*   - soltar, que no caso e tirar a opacity menor dele 
+*   - arrasta, que no caso e dar um opacity menor nele
+*   - soltar, que no caso e tirar a opacity menor dele
 
-*  3 tratar de das areas de drop, que e onde eu posso colocalos 
+*  3 tratar de das areas de drop, que e onde eu posso colocalos
     - pra criar uma area onde posso dropar preciso de colocar pelo menos 3 eventos que sao elels:
-        - dragover = evento que roda quando passar algo por cima dele no caso o item 
-        - dragleave = evento que roda quando to em uma area que posso soltar e saio dela 
-        - drop = evento que roda quando eu soltar o item encima dele, 
+        - dragover = evento que roda quando passar algo por cima dele no caso o item
+        - dragleave = evento que roda quando to em uma area que posso soltar e saio dela
+        - drop = evento que roda quando eu soltar o item encima dele,
             OBS: porem ele so roda se eu liberar no dragover o drop com um:  e.preventDefault()
             obs: como selecionar o item que estou arrastando pra jogar dentro dele?
             lembra que quando eu arrasto um item  na funcao de item que ta la emcima eu dou uma class que vai mudar a cor do item arrastado?
             vou usar essa class pra pegalo ate pq ela e retirada dele quando eu o soltar
 
-    4 pra agora devo colocar as 3 funcoes na area inical dos itens pra poder colocalos la de volta 
+    4 pra agora devo colocar as 3 funcoes na area inical dos itens pra poder colocalos la de volta
 */
 
 
 
 
 
-// IDEIAS DE REFATORAÇAO 
+// IDEIAS DE REFATORAÇAO
 // ADICIONAR EVENTOS LEGADOS PRA NAO TER QUE ADICIONAR OS EVENTOS DE ARRASTA E SOLTAR TODA VEZ QUE IR PRA PROXIMA QUESTAO E CRIAR NOVAS DIVS
