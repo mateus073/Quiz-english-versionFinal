@@ -52,8 +52,8 @@ body {
     height: 20px;
     background-color: var(--verde);
     border-radius: 20px;
-    width: 10%;
     transition: all 0.4s;
+    width: 5%;
 }
 
 #audios {

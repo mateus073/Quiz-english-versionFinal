@@ -270,8 +270,6 @@ const traduzaPNdemonstrativos = [
 ];
 
 // estrutura de tema pronomes interrogativos: "Who", "What", "Where", "When"
-
-
 const traduzaPNinterrogativos = [
     {
         frase: "Who is your teacher?",
