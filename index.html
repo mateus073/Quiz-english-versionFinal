@@ -26,7 +26,7 @@
                     <a href="index.html" class="aLink">Home</a>
                 </li>
                 <li class="menuLi">
-                    <a href="complete.html" class="aLink">Quiz</a>
+                    <a href="modalidade.html" class="aLink">Jogar</a>
                 </li>
                 <li class="menuLi">
                     <a href="explicacoes.html" class="aLink">Explicacoes</a>
@@ -37,12 +37,10 @@
             </ul>
         </nav>
 
-
         <!-- comeco do menu de navegaçao mobile -->
         <div class="btnAbrir">
             <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
         </div>
-
         <div class="menuMob">
             <div class="fecharMenu">
                 <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
@@ -53,7 +51,7 @@
                         <a href="index.html" class="aLink">Home</a>
                     </li>
                     <li class="menuLi">
-                        <a href="complete.html" class="aLink">Quiz</a>
+                        <a href="modalidade.html" class="aLink">Jogar</a>
                     </li>
                     <li class="menuLi">
                         <a href="explicacoes.html" class="aLink">Explicacoes</a>
@@ -67,6 +65,7 @@
         <!-- div responsavel pelo efeito de desfoque no site quando abrir menu -->
         <div class="overlayMenu" id="overlay"></div>
     </header>
+
     <main>
         <div class="dMain1">
             <div class="textMain1">
@@ -82,7 +81,7 @@
                         </div>
 
                         <div class="dbtntex">
-                            <button class="iniciar"><a href="complete.html" class="links">Start Quiz</a></button>
+                            <button class="iniciar"><a href="complete.html" class="links">Jogar</a></button>
                         </div>
                     </div>
 
@@ -95,7 +94,7 @@
                             <p>Pronto para testar seus conhecimentos? Clique em Iniciar para começar o quiz!</p>
                         </div>
                         <div class="btnInic">
-                            <button class="iniciar"><a href="complete.html" class="links">Iniciar</a></button>
+                            <button class="iniciar"><a href="complete.html" class="links">Jogar</a></button>
                         </div>
                     </div>
 
@@ -103,9 +102,9 @@
 
             </div>
             <div class="pcMain1">
-                <div class="opcMin1"><button>Historico</button></div>
-                <div class="opcMin1"><button class="iniciar"><a href="complete.html" class="links">Start Quiz</a></button></div>
-                <div class="opcMin1"><button>Explicacoes</button></div>
+                <div class="opcMin1"><button class="iniciar"><a href="historico.html" class="links">Historico</a></button></div>
+                <div class="opcMin1"><button class="iniciar"><a href="complete.html" class="links">StartQuiz</a></button></div>
+                <div class="opcMin1"><button class="iniciar"><a href="explicacoes.html" class="links">Explicacoes</a></button></div>
             </div>
         </div>
 
@@ -115,38 +114,53 @@
                 <img src="img/banerExemplo.jpg" alt="">
             </div>
         </div>
+
         <div class="textorint">
             <h1>Escolha uma opção para começar sua jornada</h1>
         </div>
         <div class="dMain2">
-            <d class="card">
+            <div class="card">
+
+                <!-- modalidade complete a frase -->
                 <div class="imgCard">
                     <div class="dimgC">
                         <img src="img/logo2.png" alt="">
                     </div>
-                    <h3>Stat Quiz</h3>
+                    <h3>Complete a frase</h3>
                     <p>Clique em Start Quiz para testar seus conhecimentos em inglês e se divertir aprendendo.</p>
-                    <button class="btnCard"><a href="complete.html" class="links">Start Quiz</a>s</button>
+                    <button class="btnCard"><a href="complete.html" class="links">Start</a></button>
                 </div>
 
+                <!-- modalidade traduza a frase usando efeito de arrasta e solta -->
+                <div class="imgCard">
+                    <div class="dimgC">
+                        <img src="img/logo2.png" alt="">
+                    </div>
+                    <h3>Traduza a frase</h3>
+                    <p>Clique em Start Quiz para testar seus conhecimentos em inglês e se divertir aprendendo.</p>
+                    <button class="btnCard"><a href="complete.html" class="links">Start</a></button>
+                </div>
 
+                <!-- pagina com artigos que esplique os conteudos usados nos jogos  -->
                 <div class="imgCard">
                     <div class="dimgC">
                         <img src="img/logo2.png" alt="">
                     </div>
                     <h3>Explicaçoes</h3>
-                    <p>Consulte a seção de Explicações para revisar conceitos, aprender novas dicas e fortalecer seu entendimento.</p>
-                    <button class="btnCard">ver</button>
+                    <p>Consulte a seção de Explicações para revisar conceitos, aprender novas dicas e fortalecer seu
+                        entendimento.</p>
+                    <button class="btnCard"><a href="explicacoes.html" class="links">Ver</a></button>
                 </div>
 
 
+                <!-- historico de partidas -->
                 <div class="imgCard">
                     <div class="dimgC">
                         <img src="img/logo2.png" alt="">
                     </div>
                     <h3>historico</h3>
                     <p>Acesse o Histórico para acompanhar seu progresso e e identificar onde pode melhorar.</p>
-                    <button class="btnCard">ver</button>
+                    <button class="btnCard"><a href="historico.html" class="links"></a>Ver</button>
                 </div>
 
             </div>
@@ -154,8 +168,11 @@
             <div class="textAprenseta">
                 <h2>Bem-vindo ao Quiz de Inglês!</h2>
                 <p>
-                    Este projeto foi criado com o objetivo de tornar o aprendizado do idioma mais interativo e divertido. Aqui, você pode testar seus conhecimentos de forma leve, enquanto exercita vocabulário, gramática e interpretação.      
-                    Além disso, este quiz é um reflexo dos meus estudos em programação, unindo aprendizado e prática em um só lugar. Espero que você aproveite essa experiência tanto quanto eu gostei de desenvolvê-la. 
+                    Este projeto foi criado com o objetivo de tornar o aprendizado do idioma mais interativo e
+                    divertido. Aqui, você pode testar seus conhecimentos de forma leve, enquanto exercita vocabulário,
+                    gramática e interpretação.
+                    Além disso, este quiz é um reflexo dos meus estudos em programação, unindo aprendizado e prática em
+                    um só lugar. Espero que você aproveite essa experiência tanto quanto eu gostei de desenvolvê-la.
                     Clique no botão para começar e divirta-se aprendendo!"</p>
             </div>
         </div>

@@ -55,7 +55,9 @@
 .menuMob {
     display: none;
 }
-
+.navMob a{
+    font-size: var(--font-g);
+}
 .overlayMenu {
     display: none;
 }
@@ -145,7 +147,10 @@ footer p {
 
     .cabecalho {
         justify-content: space-between;
-        height: 100px;
+    }
+
+    .cabecalho img {
+        height: 65px;
     }
 
     .hLogo {
@@ -174,7 +179,7 @@ footer p {
     }
 
     .fecharMenu i {
-        font-size: 25pt;
+        font-size: 30pt;
     }
 
 

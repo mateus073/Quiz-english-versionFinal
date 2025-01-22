@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/menuFoter.css">
-    <link rel="stylesheet" href="css/historico.css">
+    <link rel="stylesheet" href="css/modalidades.css">
     <!-- link dos icones do fontAwesom -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>historico de partidas</title>
+    <title>modalidades de jogos</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                     <a href="index.html" class="aLink">Home</a>
                 </li>
                 <li class="menuLi">
-                    <a href="modalidade.html" class="aLink">Jogar</a>s
+                    <a href="modalidade.html" class="aLink">Jogar</a>
                 </li>
                 <li class="menuLi">
                     <a href="explicacoes.html" class="aLink">Explicacoes</a>
@@ -61,44 +61,40 @@
                     <li class="menuLi">
                         <a href="historico.html" class="aLink">Historico</a>
                     </li>
+
                 </ul>
             </nav>
         </div>
         <!-- div responsavel pelo efeito de desfoque no site quando abrir menu -->
         <div class="overlayMenu" id="overlay"></div>
     </header>
-    <main class="main">
-        <div class="principal">
-            <div class="bigpt">
-                <div class="dcirculo">
-                    <div class="scoreArea">
-                        <div class="maiorPt">Maior Pontuçao!</div>
-                        <div class="gifVitoria"> <img src="img/trophy-6212557_640.png" class="prizeImage"/></div>
-                        <div class="modalidade">modalidade</div>
-                        <div class="pontucao">Acertos</div>
-                        <div class="acertos">Respostas</div>
-                        <div class="data">Data</div>
-                    </div>
+
+    <main>
+        <div class="textorint">
+            <h1>Escolha uma opção para começar sua jornada</h1>
+        </div>
+        <div class="card">
+
+            <!-- modalidade complete a frase clicando em uma das opçoes de respostas-->
+            <div class="imgCard">
+                <h3>Complete a frase</h3>
+                <div class="dimgC">
+                    <img src="img/imgCompleteFrase.png" alt="">
                 </div>
+                <p>Nesta modalidade, você deve escolher a palavra correta para completar a frase em inglês. Clique em
+                    Start para começar o desafio e melhorar seu vocabulário!</p>
+                <button class="btnCard"><a href="complete.html" class="links">Start</a></button>
             </div>
 
-            <div class="msgLogar">
-                <h2>Infelizmente nao temos historico se jogada</h2>
-                <button class="logar"><a href="complete.html" style="text-decoration: none; color: #ffffff;">Iniciar Quiz</a></button>
-            </div>
-
-            <div class="historicoPai">
-                <div class="historico">
-                    <h2>Historico de jogadas</h2>
-                    <ol class="olHistorico">
-                        <!-- lista de historico de jogadas e gerada pelo js -->
-                    </ol>
+            <!-- modalidade traduza a frase usando efeito de arrasta e solta pra colocar palavras na ordem correta da traduçao-->
+            <div class="imgCard">
+                <h3>Traduza a frase</h3>
+                <div class="dimgC">
+                    <img src="img/imgTraduzaFrase.png" alt="">
                 </div>
-
-                <div class="msgHistorico">
-                    <h2>Parabéns!</h2>
-                    <p>Parabéns pelo seu esforço e dedicação! Cada tentativa é um passo importante na sua jornada de aprendizado. Lembre-se, não é sobre a velocidade, mas sobre o progresso constante. Continue praticando, aprimore seu inglês e você verá os resultados no seu próprio ritmo. A cada desafio superado, você está mais perto de alcançar seus objetivos. Não desista agora, continue se esforçando e surpreenda-se com seu próprio progresso. Vamos juntos, o sucesso está ao seu alcance! Let's go!</p>
-                </div>
+                <p>Nesta modalidade, arraste e solte as palavras para colocá-las na ordem correta da tradução. Clique em
+                    Start para começar e testar suas habilidades de tradução!</p>
+                <button class="btnCard"><a href="traduza.html" class="links">Start</a></button>
             </div>
         </div>
     </main>
@@ -116,8 +112,6 @@
     </footer>
 
     <script src="scripts/menuFoter.js"></script>
-    <script src="scripts/complete.js"></script>
-    <script src="scripts/historico.js"></script>
 </body>
 
 </html>

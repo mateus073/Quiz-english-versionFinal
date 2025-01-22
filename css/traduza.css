@@ -192,12 +192,13 @@ body {
 
 
 .item {
-    font-size: var(--font-pp);
+    font-size: var(--font-p);
     font-weight: 300;
+    min-width: 40px;
+    text-align: center;
     color: white;
-    /* border: solid 2px var(--cinza-claro); */
     border-radius: 10px;
-    padding: 0.5rem;
+    padding: 0.6rem;
     background-color: var(--azul-claro);
     transition: all 0.3s;
 }

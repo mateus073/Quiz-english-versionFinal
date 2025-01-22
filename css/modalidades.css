@@ -1,0 +1,98 @@
+body {
+    /* background: linear-gradient(180deg, var(--preto2), var(--cinza-medio)); */
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(180deg, var(--preto2), var(--cinza-medio));
+}
+
+.textorint {
+    margin: 2rem;
+}
+
+.textorint h1 {
+    text-align: center;
+    padding-left: 3rem;
+    font-size: var(--font-g);
+    font-family: var(--font-titulo2);
+    color: var(--branco);
+
+}
+
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.imgCard {
+    box-shadow: 3px 3px 5px var(--cinza-forte);
+    border: solid 2px var(--cinza-medio);
+    border-radius: 20px;
+    padding: 2rem;
+    background: linear-gradient(360deg, var(--azul-medio), var(--cinza-medio));    width: 300px;
+    height: 400px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgCard h3 {
+    font-family: var(--font-titulo2);
+    font-size: var(--font-mg);
+    color: var(--branco);
+}
+
+.imgCard p {
+    font-size: var(--font-p);
+    color: var(--branco);
+    margin-bottom: 20px;
+}
+
+
+
+.dimgC {
+    height: 150px;
+    width: 100%;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.dimgC img {
+    width: 100%;
+    height: 100%;
+}
+
+.dimgC:hover {
+    transform: scale(1.1);
+}
+
+
+.btnCard {
+    padding: 10px;
+    font-size: var(--font-p);
+    /* background: linear-gradient(160deg, var(--cinza-medio), var(--azul-forte)); */
+    background-color: var(--azul-claro);
+    color: var(--branco);
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+}
+
+/* tirando as paradas do link */
+.links {
+    font-size: var(--font-p);
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--branco);
+}

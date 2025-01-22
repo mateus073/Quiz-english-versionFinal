@@ -1,11 +1,5 @@
 /* css do menu de navegaçao esta no arquivo "menuFooter" */
 
-
-
-
-
-
-
 /* começo do css do main */
 
 /* começo do css do main1 */
@@ -70,8 +64,9 @@ body {
 
 .dbtntex button {
     display: none;
-    padding: 0.8rem;
-    font-size: var(--font-pp);
+    padding: 1rem;
+    width: 150px;
+    font-size: var(--font-p);
     font-weight: 800;
     background: linear-gradient(160deg, var(--preto), var(--cinza-forte), var(--azul-medio));
     border: none;
@@ -82,7 +77,6 @@ body {
 
 
 
-/* 2 das 3 divs do home1 */
 .logoHome {
     flex: 1;
     display: flex;
@@ -125,10 +119,10 @@ body {
 .verULtimaPt button {
     /* filter: drop-shadow(1px 1px 1px var(--azul-claro)); */
     width: 40%;
-    padding: 0.8rem;
+    padding: 1rem;
     border: none;
     border-radius: 30px;
-    font-size: var(--font-pp);
+    font-size: var(--font-p);
     font-weight: 600;
     color: var(--branco);
     background: linear-gradient(160deg, var(--preto), var(--cinza-forte), var(--azul-medio));
@@ -152,7 +146,7 @@ body {
 .pcMain1 button {
     border: none;
     border-radius: 30px;
-    padding: 12px;
+    padding: 1rem;
     font-size: var(--font-m);
     background: linear-gradient(160deg, var(--azul-forte), var(--azul-claro));
     /* filter: drop-shadow(1px 1px 2px var(--azul-claro)); */
@@ -177,9 +171,8 @@ body {
 
 /* aqui vai ficar o css do baner */
 .banerJogos {
-    margin: 2rem 1rem;
     width: 100%;
-    background-color: var(--azul-claro);
+    /* background-color: var(--azul-claro); */
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -188,7 +181,7 @@ body {
 .dBaner {
     width: 90%;
     background-color: #142240;
-    height: 300px;
+    height: 250px;
     padding: 1rem;
 }
 
@@ -204,17 +197,17 @@ body {
 .textorint h1 {
     text-align: center;
     padding-left: 3rem;
-    font-size: var(--font-mg);
+    font-size: var(--font-g);
     font-family: var(--font-titulo2);
-    color: var(--cinza-forte);
+    color: var(--preto2);
 
 }
 
 .card {
     display: flex;
-    gap: 3rem;
+    flex-wrap: wrap;
     padding: 1rem;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     background-color: var(--branco);
 }
@@ -223,9 +216,9 @@ body {
     box-shadow: 2px 2px 3px var(--cinza-forte);
     border-radius: 20px;
     padding: 1rem;
-    background-color: rgb(247, 254, 255);
+    background-color: rgb(245, 250, 255);
     width: 300px;
-    height: 370px;
+    height: 350px;
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -366,7 +359,6 @@ footer p {
     }
 
     .verULtimaPt p {
-
         width: 250px;
         text-align: center;
     }
@@ -393,7 +385,7 @@ footer p {
 
     .card {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem;
         padding: 0rem 1rem;
     }
 
