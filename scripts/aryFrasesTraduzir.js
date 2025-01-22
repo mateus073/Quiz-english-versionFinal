@@ -15,19 +15,6 @@ const traduzaFrasesAleatorias = [
         ]
     },
     {
-        frase: "How old are you?",
-        traducao: "Quantos anos você tem?",
-        traduzida: [
-            { palavra: "anos", dataName: "b" },
-            { palavra: "novo", dataName: "plvDistratora" },
-            { palavra: "tem?", dataName: "d" },
-            { palavra: "Quantos", dataName: "a" },
-            { palavra: "idade", dataName: "plvDistratora" },
-            { palavra: "você", dataName: "c" },
-            { palavra: "velho", dataName: "plvDistratora" }
-        ]
-    },
-    {
         frase: "Thank you very much.",
         traducao: "Muito obrigado.",
         traduzida: [
@@ -51,6 +38,19 @@ const traduzaFrasesAleatorias = [
             { palavra: "tudo bem?", dataName: "b" },
             { palavra: "sol", dataName: "plvDistratora" },
             { palavra: "lampada", dataName: "plvDistratora" }
+        ]
+    },
+    {
+        frase: "How old are you?",
+        traducao: "Quantos anos você tem?",
+        traduzida: [
+            { palavra: "anos", dataName: "b" },
+            { palavra: "novo", dataName: "plvDistratora" },
+            { palavra: "tem?", dataName: "d" },
+            { palavra: "Quantos", dataName: "a" },
+            { palavra: "idade", dataName: "plvDistratora" },
+            { palavra: "você", dataName: "c" },
+            { palavra: "velho", dataName: "plvDistratora" }
         ]
     },
     {

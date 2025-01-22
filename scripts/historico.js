@@ -10,7 +10,7 @@ function resgate() {
 
         // loop pra colocar historico de partidas na tela
         for (let x = 0; x < newHistori.length; x++) {
-            let texto = `${newHistori[x].data}  |  Acertos: ${newHistori[x].acerto}/${newHistori[x].quest}  |  Taxa de acertos: ${newHistori[x].pct}%`
+            let texto = `${newHistori[x].data}  || Modalidade: ${newHistori[x].modalidade} || Acertos: ${newHistori[x].acerto}/${newHistori[x].quest}  ||  Taxa de acertos: ${newHistori[x].pct}%`
             let newLi = document.createElement("li")
             newLi.innerText = texto
 
@@ -25,11 +25,12 @@ function resgate() {
             return maior
         }, newHistori[0])
 
+
         // exibindo a melhor partida
+        document.querySelector('.modalidade').innerText = `${maiorPt.modalidade}`
         document.querySelector('.pontucao').innerText = `Acertou ${maiorPt.pct}%`
         document.querySelector('.data').innerText = `${maiorPt.data}`
         document.querySelector('.acertos').innerText = `Respondeu ${maiorPt.quest} questoes e acertou ${maiorPt.acerto}`
-
 
         // muda img conforme a pct de acertos:
         let img = document.querySelector('.prizeImage')
@@ -51,6 +52,5 @@ function resgate() {
     }
 }
 
-//  localStorage.clear()
 
 resgate()

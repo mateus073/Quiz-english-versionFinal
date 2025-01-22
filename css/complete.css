@@ -1,6 +1,6 @@
 
 body {
-    background: linear-gradient(180deg, var(--preto), var(--cinza-medio));
+    background: linear-gradient(180deg, var(--preto2), var(--cinza-medio));
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -207,7 +207,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    border: solid 3px var(--cinza-claro);
+    border: solid 2px var(--cinza-forte);
     background: linear-gradient(360deg, var(--cinza-medio), var(--cinza-medio));
     filter: drop-shadow(1px 1px 4px var(--cinza-forte));
     border-radius: 30px;

@@ -18,19 +18,17 @@ let indexQues = 0
 let pontos = 0
 
 
-// Define o tema a ser trabalhado (qual array de objetos)
-// recebe o event e pega o data-name
+ // Obtém o atributo 'data-op' do elemento clicado para identificar o tema selecionado
 function tema(e) {
-    // Obtém o atributo 'data-op' do elemento clicado para identificar o tema selecionado
     let dataOpTema = e.target.getAttribute('data-op');
 
+    // Oculta o contêiner de seleção de temas e exibe as áreas de perguntas e barra de progresso
     if (dataOpTema) {
-        // Oculta o contêiner de seleção de temas e exibe as áreas de perguntas e barra de progresso
         dTema.style.display = "none";
         menu.style.display = "none";
         dQuest.style.display = "flex";
         dbarProgress.style.display = "flex";
-        console.log("tema opçao clicado:", dataOpTema);
+        // console.log("tema opçao clicado:", dataOpTema);
     }
 
     // Verifica qual tema foi selecionado e define o array de questões correspondente
@@ -55,16 +53,15 @@ function tema(e) {
  * @param {object} questVez - questao da vez que sera utilizada.
  */
 function obterDadosQuestao() {
-    // console.log("array de questoes recebido em obt dados", arrayQuest)
-    // console.log("index do obter dados: ", indexQues)
     if (arrayQuest.length > indexQues) {
+        // console.log("caio no if de obter dados")
+        
         // atualiza barra de progresso
         let pct = (indexQues / arrayQuest.length) * 100
         document.querySelector('.sonProgress').style.width = `${pct}%`
-        console.log("index da questao em atulizarTela: ", indexQues)
 
+        // seleciona a questao da vez
         let questVez = arrayQuest[indexQues]
-        console.log("caio no if de obter dados")
         console.log("index do obter dados: ", indexQues)
 
         // Extração de dados da questão
@@ -84,18 +81,18 @@ function obterDadosQuestao() {
 
         // Atualiza a tela com os dados processados
         atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados);
-    } else {
+    } 
+    else { // so cai nesse else quando terminar as questoes
         document.querySelector('.sonProgress').style.width = "100%"
-        // chama a funcao que ira finalizar o quiz
+        menu.style.display = "flex";
+        dQuest.style.display = "none";
+        dbarProgress.style.display = "none";
+        dResult.style.display = "flex"
+        resultadoFinal(pontos)
     }
 
     indexQues++ // ja incrementa o indice da questao pra quando for chamada novamente nao dar erro
 }
-
-// document.querySelector('.proximaQst').addEventListener('click', () => {
-//     obterDadosQuestao()
-// })
-
 
 /* funcao responsavel por verificar se todas as areas foram preenchidas com os itens se
 * se sim ela adicona o vento no botao verificar que chama a funcao verificar
@@ -109,7 +106,6 @@ function tudoPreenchido() {
     if (areas.length === itens.length) {
         btnVerificar.addEventListener('click', verificarAcerto)
         btnVerificar.style.backgroundColor = "#85c421"; // Atualiza a cor do botão para verde
-
         console.log('todas as áreas foram preenchidas com itens');
     } else {
         btnVerificar.removeEventListener('click', verificarAcerto)
@@ -117,6 +113,8 @@ function tudoPreenchido() {
         console.log('nem todas as areas foram preenchidas')
     }
 }
+
+
 
 
 /** verificar se os itens estao em seus lugares corretos
@@ -152,11 +150,18 @@ function verificarAcerto() {
     });
     if (areaCorretaPreenchida) {
         pontos++
-        console.log('todas as areas foram preenchidas corretamante')
+        console.log("todas as areas foram preenchidas corretamante, pontos: ", pontos)
     }
 }
 
 
+
+
+/** funcao reponsavel por passar pra proxima questao
+ *  quando clica no botao "proximo" ela chama a funcao que:
+ *  - incrementa o indice e chama atualizar tela 
+ * obs: so e possivel passar pra proximaQuest se ja ter clicado no btn "verificar" 
+*/
 function proximaQuest() {
     btnProximo.removeEventListener('click', proximaQuest)
     btnProximo.style.backgroundColor = "#35454d"; // botao volta pro cinza
@@ -169,7 +174,8 @@ function proximaQuest() {
 
 
 /** Atualiza a interface do jogo com base nos dados fornecidos.
- *
+ * limpa conteudo antigo
+ * 
  * prenche o paragrafo da frase a traduzir
  * prenche as divs itens com o texto e dataname das palavras da vez
  * cria as divs area que e onde irei arrastar os itens e soltar
@@ -231,9 +237,16 @@ function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorre
 
 
 
-/*
-// Exibe os resultados
+
+/** Exibe os resultados
+ * exibe a div final que contem as info da partida 
+ * e passa os dados da partida pra funcao que salva no local storage
+ * 
+ * e chamada quando acaba as questoes em obter dados e recebe a pontuçao 
+ * acessar o arrayQuest que e o: array de obj escolhido ele e pego em  tema()
+*/
 function resultadoFinal(pt) {
+    console.log("pontuçao obtida em resultado final: ", pt)
     // Elementos de texto para exibição do resultado
     let parabens = document.querySelector('.scoreText1');
     let pctScore = document.querySelector('.scorePct');
@@ -245,10 +258,10 @@ function resultadoFinal(pt) {
     let genio = document.querySelector('.miseravelGenio');
 
     // Calcula a porcentagem de acertos
-    let acerto = (pt / ArrQuest.length) * 100;
+    let acerto = (pt / arrayQuest.length) * 100;
     acerto = acerto.toFixed(0)
     pctScore.textContent = `Acertou ${acerto}%`;
-    textScore.textContent = `Você respondeu ${ArrQuest.length} questões e acertou ${pt}`;
+    textScore.textContent = `Você respondeu ${arrayQuest.length} questões e acertou ${pt}`;
 
     // Define mensagens e áudios com base na porcentagem de acertos
     if (acerto <= 49) {
@@ -265,7 +278,7 @@ function resultadoFinal(pt) {
         pctScore.style.color = "#ffe714";
     }
 
-
+    
     // pegando os dados e passando pra funcao que constroi o objeto que vai pro local storage
     let data = new Date()
     let mes = data.getMonth() + 1
@@ -273,18 +286,79 @@ function resultadoFinal(pt) {
     let hora = data.getHours()
     let minutos = data.getMinutes()
 
-    let dateForamatada = `${dia}/${mes} as ${hora}:${minutos}`
+    let dateForamatada = `${dia}/${mes} as ${hora}:${minutos}` // passa a data atual 
+    
+    let modalidade = "Traduza as frases" // nome da modalida
 
     // pegando quantidade de questoes e acertos:
-    let quest = ArrQuest.length
+    let quest = arrayQuest.length
     let acertos = pt
 
-    // chamando a funcao que ira criar um objeto com os dados da partida
-    salvarPartida(dateForamatada, acerto, quest, acertos)
+    // chamando a funcao que ira criar um objeto com os dados da partida pro local storage
+    salvarPartida(modalidade, dateForamatada, acerto, quest, acertos)
 }
 
+
+
+
+
+// eventos de click nos botoes da div final, se aperta neles reseta o quiz 
+
+
+document.querySelector('.btnNovamente').addEventListener('click', reset);// Restaura o estado inicial para permitir que o usuário refaça o quiz
+document.querySelector('.home').addEventListener('click', reset); // Restaura o estado inicial para permitir que o usuário refaça o quiz, e direcina o user pra pagina home
+
+
+// funcao que reseta o quiz 
+function reset() {
+    dResult.style.display = "none";
+    menu.style.display = "flex";
+    dTema.style.display = "flex";
+
+    indexQues = 0; // Reseta o índice das questões
+    pontos = 0; // Reseta a pontuação
+    arrayQuest = 0; // Limpa o array de questões
+    document.querySelector('.sonProgress').style.width = "0%"; // Reseta a barra de progresso
+}
+
+
+
+
+// funcao que constroi o objeto que ira ser armazenado no localStorage
+function salvarPartida(modalidade, date, pct, quest, acerto) {
+    let partida = {
+        modalidade: modalidade,
+        data: date,
+        pct: pct,
+        quest: quest,
+        acerto: acerto,
+        id: 1
+    }
+
+    // resgata o array de partidas que ta no LS e converte pra objeto normal, ou crio um array vazio caso nao exista 
+    let partidasSalvas = JSON.parse(localStorage.getItem("partidas")) || []
+
+    // nao entende poha nenhuma, mas parece que ele vai pegar o maior id do array
+    let maiorId = partidasSalvas.reduce((max, partida) => Math.max(max, partida.id), 0)
+
+    // pega o id da partida que ira ser salva e adiciona o valor do maior id ja existente mais 1
+    partida.id = maiorId + 1
+
+    // adiciona a nova partida ao array de partidas
+    partidasSalvas.push(partida)
+
+    // adiciona salva o array atualizado no local storage
+    localStorage.setItem("partidas", JSON.stringify(partidasSalvas))
+
+}
+
+
 // FIM DAS FUNCOES RELACIONDAS A LOGICA DO JOGO
-*/
+
+
+
+
+
 
 
 
@@ -305,6 +379,8 @@ document.querySelector('.itens').addEventListener('drop', dropAreaIncial)  // ro
 /* FIM DOS EVENTOS DO EFEITO DE ARRASTA E SOLTA */
 
 
+
+
 /* FUNCOES DO EFEITO DE ARRASTA E SOLTA */
 
 /* 1 FUNCOES RELACIONADAS AO ITEM */
@@ -322,7 +398,9 @@ function dragEnd(e) {
 
 
 
+
 /* 2 FUNCOES RELACIONADAS A AREA  */
+
 //2 evento que roda quando passar algo por cima dele no caso o item
 function dragOver(e) {
     // so libera pra drop, ativa efeito de mudar de cor se nao ter nemhum item na area que quero soltar
@@ -352,38 +430,43 @@ function drop(e) {
 
     // pego o item que ta sendo movido OBS: essa calss arrastou item so existe quando ele ta sendo arrastado
     let itemSendoMovido = document.querySelector('.item.arastouItem')
-    // console.log('solto o item na area')
-
+    
     // verificaçao pra saber se ja existe algum item dentro da area que to querendo soltar o item
     if (e.currentTarget.querySelector('.item') === null) {
         e.currentTarget.appendChild(itemSendoMovido)
-        console.log('solto na area que fica a respota')
+        // console.log('solto na area que fica a respota')
+
         tudoPreenchido()
     }
 }
 
 
 
+
+
 //3 FUNCOES DA AREA INICAL DOS ITENS
 // inclui a logica de poder dropar de volta os itens na div pai
 // obs: nao irei comentar pq ela e igual as funcoes acima que ja comentei
+
 function dragOverAreaIncial(e) {
     e.preventDefault()
     e.currentTarget.classList.add('hover')
     // console.log('passou por cima da area inical ')
 }
 
+
 function dragLeaveAreaIncial(e) {
     e.currentTarget.classList.remove('hover')
     // console.log('tirou de cima da area inicail ')
 }
+
 
 function dropAreaIncial(e) {
     e.currentTarget.classList.remove('hover')
     let itemSenodoMovido = document.querySelector('.item.arastouItem')
 
     e.currentTarget.appendChild(itemSenodoMovido)
-    console.log('soltou em cima da area inical')
+    // console.log('soltou em cima da area inical')
     tudoPreenchido()
 }
 
@@ -417,9 +500,3 @@ function dropAreaIncial(e) {
     4 pra agora devo colocar as 3 funcoes na area inical dos itens pra poder colocalos la de volta
 */
 
-
-
-
-
-// IDEIAS DE REFATORAÇAO
-// ADICIONAR EVENTOS LEGADOS PRA NAO TER QUE ADICIONAR OS EVENTOS DE ARRASTA E SOLTAR TODA VEZ QUE IR PRA PROXIMA QUESTAO E CRIAR NOVAS DIVS

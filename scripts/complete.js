@@ -109,6 +109,10 @@ function refreshScreen(arrayQuestoes) {
         // Se não houver mais questões, exibe o resultado final
         dQuest.style.display = "none";
         dResult.style.display = "flex";
+        
+        dbarProgress.style.display = "none";
+        menu.style.display = "flex";
+
         finishQuiz(pt);
     }
 
@@ -205,6 +209,8 @@ function finishQuiz(pt) {
 
 
     // pegando os dados e passando pra funcao que constroi o objeto que vai pro local storage
+    let modalidade = "Complete as Palavras"
+
     let data = new Date()
     let mes = data.getMonth() + 1
     let dia = data.getDate()
@@ -218,8 +224,11 @@ function finishQuiz(pt) {
     let acertos = pt
 
     // chamando a funcao que ira criar um objeto com os dados da partida
-    salvarPartida(dateForamatada, acerto, quest, acertos)
+    salvarPartida(modalidade, dateForamatada, acerto, quest, acertos)
 }
+
+
+
 
 // Reseta o quiz
 // Restaura o estado inicial para permitir que o usuário refaça o quiz
@@ -227,6 +236,8 @@ document.querySelector('.btnNovamente').addEventListener('click', reset);
 
 // restart pelo botao do home
 document.querySelector('.home').addEventListener('click', reset);
+
+
 
 function reset() {
     dResult.style.display = "none";
@@ -243,8 +254,9 @@ function reset() {
 
 
 // funcao que constroi o objeto que ira ser armazenado no localStorage
-function salvarPartida(date, pct, quest, acerto) {
+function salvarPartida(modalidade, date, pct, quest, acerto) {
     let partida = {
+        modalidade: modalidade,
         data: date,
         pct: pct,
         quest: quest,

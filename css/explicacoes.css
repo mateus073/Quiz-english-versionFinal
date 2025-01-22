@@ -22,7 +22,7 @@ body {
 
 /* filha do div das opçoes */
 .tema-son {
-    border: solid 3px var(--cinza-claro);
+    border: solid 2px var(--cinza-medio);
     background: linear-gradient(360deg, var(--azul-medio), var(--cinza-medio));
     filter: drop-shadow(1px 1px 4px var(--cinza-forte));
     border-radius: 20px;

@@ -11,6 +11,7 @@
 
 :root {
     --preto: #0f171b;
+    --preto2: #162127;
     --azul-forte: #142240;
     --azul-claro: #4c95b3;
     --cinza-forte: #152026;
@@ -37,7 +38,7 @@
 .cabecalho {
     display: flex;
     justify-content: space-around;
-    background: linear-gradient(160deg, var(--preto), var(--cinza-forte), var(--azul-medio));
+    background: linear-gradient(160deg, var(--preto2), var(--cinza-forte), var(--cinza-medio));
     align-items: center;
 }
 
@@ -93,7 +94,7 @@
 /* comeco do footer */
 footer {
     background-color: var(--cinza-forte);
-    border-top: solid 2px var(--cinza-claro);
+    /* border-top: solid 2px var(--cinza-claro); */
     color: #fff;
     text-align: center;
     padding: 15px 0;

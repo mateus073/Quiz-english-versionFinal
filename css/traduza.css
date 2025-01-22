@@ -1,5 +1,6 @@
 :root {
     --preto: #0f171b;
+    --preto2: #162127;
     --azul-forte: #142240;
     --azul-claro: #4c95b3;
     --cinza-forte: #152026;
@@ -23,7 +24,7 @@
 
 
 body {
-    background: linear-gradient(180deg, var(--preto), var(--cinza-medio));
+    background: linear-gradient(180deg, var(--preto2), var(--cinza-medio));
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -221,6 +222,75 @@ body {
 
 
 
+/* css de resultado */
+/* div pai da div que exibe as respostas */
+.fatherResult {
+    display: none;
+    /*ocultando a div do resultado*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* img da coroa */
+.gifVitoria img {
+    height: 100px;
+}
+
+
+.scoreArea {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: solid 2px var(--cinza-forte);
+    background: linear-gradient(360deg, var(--cinza-medio), var(--cinza-medio));
+    filter: drop-shadow(1px 1px 4px var(--cinza-forte));
+    border-radius: 30px;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+}
+
+.texResult {
+    font-size: var(--font-g);
+    font-weight: 500;
+    color: var(--branco);
+    margin-bottom: 10px;
+}
+
+/* texto de parabens */
+.scoreText1 {
+    font-size: var(--font-m);
+    color: white;
+}
+
+
+/* acertos */
+.scorePct {
+    font-size: var(--font-mg);
+    color: var(--verde);
+}
+
+
+
+.scoreText2 {
+    font-size: var(--font-p);
+}
+
+/* div que contem os botoes */
+.fatherResult button {
+    background-color: var(--azul-claro);
+    border: none;
+    border-radius: 15px;
+    padding: 0.8rem;
+    margin: 10px;
+    font-size: var(--font-p);
+    font-weight: 600;
+    color: var(--branco);
+}
+
+
 @media (max-width: 600px) {
     :root {
         --azul-forte: #142240;
@@ -229,16 +299,33 @@ body {
         --cinza-medio: #1e2d35;
         --cinza-claro: #3E5159;
         --verde: #94D233;
-        --font-g: 1.75rem; /* 28px */
-        --font-mg: 1.5rem; /* 24px */
-        --font-m: 1.25rem; /* 20px */
-        --font-p: 0.875rem; /* 14px */
-        --font-pp: 0.75rem; /* 12px */
+        --font-g: 1.75rem;
+        --font-mg: 1.5rem;
+        --font-m: 1.25rem;
+        --font-p: 0.875rem;
+        --font-pp: 0.75rem;
     }
 
-    
+
     .questionArea {
         gap: 2rem;
+    }
+
+    .fatherResult {
+        padding: 1rem;
+    }
+
+    .scoreArea {
+        padding: 1rem;
+    }
+
+
+    /* botoes */
+    .fatherResult button,
+    .traducao,
+    .proximaQst {
+        margin: 10px;
+        font-weight: 500;
     }
 }
 
