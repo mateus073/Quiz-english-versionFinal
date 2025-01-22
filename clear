@@ -1,0 +1,65 @@
+[33mcommit 8b9406e84ef21259140a6859cb3cb5cc9fa0f30e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature-development[m[33m, [m[1;31morigin/feature-development[m[33m)[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Tue Jan 21 11:49:32 2025 -0300
+
+    consumo de objetos e barra de progresso pronto - falta exibir pt final
+
+[33mcommit 59df2f3b24421d5fce6618bfd0e014050cda0da4[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Mon Jan 20 13:20:42 2025 -0300
+
+    aidiconei quest, melhorei home, adicinei esolha assutno no traduza, mas ta dando problema na adicao de eventos nas divs area e item
+
+[33mcommit da4ce54a805e86a836f2841f0b11e8472b55b216[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Fri Jan 17 12:16:31 2025 -0300
+
+    problema no evento do botao de passar pra proxima corrijido, falta funcao de barra de progresso e de exibir pontuaçao final
+
+[33mcommit dfe0cab63a5b0eb705e350b41de89740ccdf75db[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Thu Jan 16 21:14:34 2025 -0300
+
+    problema de eventos na area corrijido, apenas os adicionei novamente ao passar pra proxima questao
+
+[33mcommit fb6dec240a1322e5351c52a9e22e126c629c1f25[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Thu Jan 16 19:20:58 2025 -0300
+
+    proxima questao finalizado, problema nos eventos das areas apos passapro proximo
+
+[33mcommit c64ff146de6840583b6f3d2b4980db30879f572e[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Thu Jan 16 18:19:40 2025 -0300
+
+    funcionalidade de certo ou errado implementeada. falta a de passar pra proxima questao sem dar erro
+
+[33mcommit e503091bb6284afbdacea4cefd75d5e440da096e[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Thu Jan 16 00:11:57 2025 -0300
+
+    funcionalidade de prencher tela com array de objetos implementada. falta criar a logica do acerto para poder pular pra proxima
+
+[33mcommit 524c442bfd4472494e023d8b33c12f4d42ba182f[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Wed Jan 15 16:09:24 2025 -0300
+
+    funcionalidade de traduza quase pronta
+
+[33mcommit 12b5bd147d196c40b75a61e619ec218544ee3209[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Tue Jan 14 15:30:07 2025 -0300
+
+    apenas testando a branch que irei desenvolver
+
+[33mcommit 09f46c493bdba2709b5d8e9a2cc48d85c748b174[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Tue Jan 14 15:20:03 2025 -0300
+
+    mudei o titulo pra arrasta e solta
+
+[33mcommit 559c3818a09b963a893cf2a65e31b9b1c0597b00[m
+Author: Mateus Marques da Silva <mateus.marques.da.silva@gmail.com>
+Date:   Wed Jan 8 18:04:49 2025 -0300
+
+    primeior comit

@@ -4,19 +4,18 @@ const menu = document.querySelector('.cabecalho'); // menu mob
 let dQuest = document.querySelector('.questionArea'); // Área das questões
 let dResult = document.querySelector('.fatherResult'); // Contêiner do resultado final
 const dTema = document.querySelector('.tema-father'); // Tema
-
-let arrayQuest = null;  // A variável global que armazenará o array de questões
-let indexQues = 0
-let pt = 0
-let cliqueiProximo = false
-const btnProximoQuest = document.querySelector('.proximaQst');
-
-// COMEÇO DAS FUNÇÕES RESPONSÁVEIS POR ATUALIZAR A TELA
+let btnProximo = document.querySelector('.proximaQst')
+let btnVerificar = document.querySelector('.btnVerificar')
 
 // vai chamar a funcao que ira pegar o dataname e usalo pra decidir o tema a ser usado (qual array do objtos)
 document.querySelectorAll('.option').forEach(item => {
     item.addEventListener('click', tema);
 });
+
+// variaveis de controle
+let arrayQuest = null
+let indexQues = 0
+let pontos = 0
 
 
 // Define o tema a ser trabalhado (qual array de objetos)
@@ -31,7 +30,7 @@ function tema(e) {
         menu.style.display = "none";
         dQuest.style.display = "flex";
         dbarProgress.style.display = "flex";
-        console.log(dataOpTema);
+        console.log("tema opçao clicado:", dataOpTema);
     }
 
     // Verifica qual tema foi selecionado e define o array de questões correspondente
@@ -45,91 +44,136 @@ function tema(e) {
         arrayQuest = traduzaToBe;
     }
 
-    // passa o array de objetos a ser trabalhado
-    questaoVez(arrayQuest);
-    console.log(arrayQuest);
+    // console.log("array escolhido no item: ", arrayQuest)
+    obterDadosQuestao()
+
+
 }
-
-
-// recebe o array de objetos a ser trabalhado 
-// acessa a questao da vez e retorna ela pra fucao que ira manipulalos 
-// por fim incrementa ao index, pra quando for chamada novamente atualizar a tela
-function questaoVez(arrayQuest) {
-    if (indexQues < arrayQuest.length) { 
-        indexQues++
-        let questVez = arrayQuest[indexQues - 1]; // Seleciona a questão atual    obterDadosQuestao()
-        obterDadosQuestao(questVez)
-        // console.log('incrementa indesQuest em questao da vez')
-    } else {
-        console.log("fim do jogo, Nao ha mais questoes")
-        // chama a funcao que vai fechar a div do jogo e vai exibir a div de resultados
-        // resultadoFinal()
-    }
-   
-}
-
 
 /** Função principal para obter os dados
  *  obtem os dados da  questão atual e passa para a função que atualiza a tela
  * @param {object} questVez - questao da vez que sera utilizada.
  */
-function obterDadosQuestao(questVez) {
-    // Extração de dados da questão
-    let txtTraduzirVez = questVez.frase;
-    let palavrasEDataname = questVez.traduzida;
-    let txtTraducao = questVez.traducao;
+function obterDadosQuestao() {
+    // console.log("array de questoes recebido em obt dados", arrayQuest)
+    // console.log("index do obter dados: ", indexQues)
+    if (arrayQuest.length > indexQues) {
+        // atualiza barra de progresso
+        let pct = (indexQues / arrayQuest.length) * 100
+        document.querySelector('.sonProgress').style.width = `${pct}%`
+        console.log("index da questao em atulizarTela: ", indexQues)
 
-    // Filtra apenas os itens corretos (excluindo palavras distratoras)
-    let itensCorretos = palavrasEDataname.filter(item => item.dataName !== "plvDistratora");
+        let questVez = arrayQuest[indexQues]
+        console.log("caio no if de obter dados")
+        console.log("index do obter dados: ", indexQues)
 
-    // Ordenando em ordem alfabética para poder preencher o data-name na sequência correta
-    let itensCorretosOrdenados = itensCorretos.sort((a, b) => {
-        if (a.dataName < b.dataName) return -1;
-        if (b.dataName < a.dataName) return 1;
-        return 0;
-    });
+        // Extração de dados da questão
+        let txtTraduzirVez = questVez.frase;
+        let palavrasEDataname = questVez.traduzida;
+        let txtTraducao = questVez.traducao;
 
-    // Atualiza a tela com os dados processados
-    atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados);
-}
+        // Filtra apenas os itens corretos (excluindo palavras distratoras)
+        let itensCorretos = palavrasEDataname.filter(item => item.dataName !== "plvDistratora");
 
-// adiciona evento de clique pra chamar a funcao que passa pra proxima questao
-btnProximoQuest.addEventListener('click', proximaQuest)
+        // Ordenando em ordem alfabética para poder preencher o data-name na sequência correta
+        let itensCorretosOrdenados = itensCorretos.sort((a, b) => {
+            if (a.dataName < b.dataName) return -1;
+            if (b.dataName < a.dataName) return 1;
+            return 0;
+        });
 
-// Função para passar para a próxima questão
-function proximaQuest() {
-    // Verifica se ainda há mais questões no array
-    if (indexQues < arrayQuest.length) {
-        cliqueiProximo = true
-        let questVez = arrayQuest[indexQues]; // Seleciona a próxima questão
-       
-        sequeciaCorreta()
-
-        // da um tempo pra mostrar o verde do acerto antes de passar pra proxima questao 
-        setTimeout(() => obterDadosQuestao(questVez), 1000);// Atualiza os dados da questão
-
-        console.log('Incrementa o índice em proxima questao')
-
-        btnProximoQuest.removeEventListener('click', proximaQuest); // Remove o evento de clique
-        btnProximoQuest.style.backgroundColor = "#35454d"; // Botão volta para cinza
+        // Atualiza a tela com os dados processados
+        atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorretosOrdenados);
     } else {
-        console.log('Fim do jogo! Parabéns!');
-        document.querySelector('.sonProgress').style.width = "100%" // enche a barra de progresso quando acabar as questoes 
-        // chama a funcao que vai fechar a div do jogo e vai exibir a div de resultados
-        // resultadoFinal()
-    } 
-    indexQues++; // Incrementa o índice para a próxima questão
+        document.querySelector('.sonProgress').style.width = "100%"
+        // chama a funcao que ira finalizar o quiz
+    }
+
+    indexQues++ // ja incrementa o indice da questao pra quando for chamada novamente nao dar erro
+}
+
+// document.querySelector('.proximaQst').addEventListener('click', () => {
+//     obterDadosQuestao()
+// })
+
+
+/* funcao responsavel por verificar se todas as areas foram preenchidas com os itens se
+* se sim ela adicona o vento no botao verificar que chama a funcao verificar
+* obs: verificar chama a funcao proximaQuestao
+*/
+function tudoPreenchido() {
+    let areas = document.querySelectorAll('.area'); // Seleciona todas as áreas de resposta
+    let itens = document.querySelectorAll('.area .item');  // Seleciona os itens dentro das áreas
+
+    // Verifica se todas as áreas estão preenchidas
+    if (areas.length === itens.length) {
+        btnVerificar.addEventListener('click', verificarAcerto)
+        btnVerificar.style.backgroundColor = "#85c421"; // Atualiza a cor do botão para verde
+
+        console.log('todas as áreas foram preenchidas com itens');
+    } else {
+        btnVerificar.removeEventListener('click', verificarAcerto)
+        btnVerificar.style.backgroundColor = "#35454d"; // botao volta pro cinza
+        console.log('nem todas as areas foram preenchidas')
+    }
+}
+
+
+/** verificar se os itens estao em seus lugares corretos
+* adiciona cor verde ou vermelha depende se ta certo ou errado
+* adiciona o evento de click no botao proxima questao pra poder passar pra proxima*/
+function verificarAcerto() {
+    btnVerificar.removeEventListener('click', verificarAcerto)
+    btnVerificar.style.backgroundColor = "#35454d"; // botao volta pro cinza
+
+    btnProximo.addEventListener('click', proximaQuest)
+    btnProximo.style.backgroundColor = "#85c421"; // Atualiza a cor do botão para verde
+
+    let areaCorretaPreenchida = true
+    let areas = document.querySelectorAll('.area'); // Seleciona todas as áreas de resposta
+
+    areas.forEach(area => {
+        const item = area.querySelector('.item'); // Pega os itens dentro da área
+        item.removeAttribute('draggable')
+        
+        const itemName = item.getAttribute('data-name');
+        const areaName = area.getAttribute('data-name');
+
+        // obs: esse efeitos de cor e removido ao passar pro proximo pq tds as divs sao recriadas
+        if (itemName !== areaName) {
+            areaCorretaPreenchida = false;
+            item.style.backgroundColor = "#e44545"
+            console.log('o item dessa posição está errado');
+        }
+        else {
+            item.style.backgroundColor = "#85c421"
+            console.log('o item dessa posição está correto');
+        }
+    });
+    if (areaCorretaPreenchida) {
+        pontos++
+        console.log('todas as areas foram preenchidas corretamante')
+    }
+}
+
+
+function proximaQuest() {
+    btnProximo.removeEventListener('click', proximaQuest)
+    btnProximo.style.backgroundColor = "#35454d"; // botao volta pro cinza
+
+    obterDadosQuestao()
+    console.log("apertei o botao de proxima questao")
 }
 
 
 
 
-/**Atualiza a interface do jogo com base nos dados fornecidos.
- * 
- * prenche o paragrafo da frase a traduzir 
- * prenche as divs itens com o texto e dataname das palavras da vez 
+/** Atualiza a interface do jogo com base nos dados fornecidos.
+ *
+ * prenche o paragrafo da frase a traduzir
+ * prenche as divs itens com o texto e dataname das palavras da vez
  * cria as divs area que e onde irei arrastar os itens e soltar
- * 
+ *
  * @param {string} txtTraduzirVez - Frase que deve ser traduzida.
  * @param {Array} palavrasEDataname - Lista de palavras para exibição como itens arrastáveis.
  * @param {string} txtTraducao - Tradução da frase completa.
@@ -139,9 +183,6 @@ function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorre
     let elPraTraduzir = document.querySelector('.textPraTraduzir') // Elemento onde será exibida a frase a ser traduzida
     let paiItens = document.querySelector('.itens') // Contêiner para os itens arrastáveis
     let elDivAreaPai = document.querySelector('.paiAreasTraducao') // Contêiner para as áreas de resposta
-
-    // volta ao falso, pra so fica true se aperta no botao de proximo
-    cliqueiProximo = false
 
     // Limpa os elementos da tela antes de preencher novamente
     elPraTraduzir.innerText = ''
@@ -154,11 +195,6 @@ function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorre
 
     // Atualiza o texto da frase a ser traduzida
     elPraTraduzir.textContent = txtTraduzirVez
-
-    // atualiza barra de progresso
-    let pct = ((indexQues -1) / arrayQuest.length) * 100
-    document.querySelector('.sonProgress').style.width = `${pct}%`
-    console.log(indexQues)
 
     // Criação das divs para os itens arrastáveis
     for (let x = 0; x < palavrasEDataname.length; x++) {
@@ -174,7 +210,7 @@ function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorre
 
         // adicionando eventos que chama a funcao que permite arrastalos
         newdivItem.addEventListener('dragstart', dragStart) //roda quando eu arrastar
-        newdivItem.addEventListener('dragend', dragEnd) //roda quando eu soltar 
+        newdivItem.addEventListener('dragend', dragEnd) //roda quando eu soltar
         paiItens.appendChild(newdivItem) // Adiciona o item ao contêiner de itens
     }
 
@@ -185,79 +221,14 @@ function atualizaTela(txtTraduzirVez, palavrasEDataname, txtTraducao, itensCorre
         let newdiv = document.createElement('div') // Cria uma nova div para a área
         newdiv.classList.add('area') // Adiciona a classe 'area'
         newdiv.setAttribute('data-name', dataname)  // Define o atributo data-name da área
-        newdiv.addEventListener('dragover', dragOver) // roda quando passa algo por cima dele 
-        newdiv.addEventListener('dragleave', dragLeave) // roda quando to na area que posso soltar e saio dela 
+        newdiv.addEventListener('dragover', dragOver) // roda quando passa algo por cima dele
+        newdiv.addEventListener('dragleave', dragLeave) // roda quando to na area que posso soltar e saio dela
         newdiv.addEventListener('drop', drop) // roda quando soltar o item na area
 
         elDivAreaPai.appendChild(newdiv) // Adiciona a área ao contêiner de áreas
     }
 }
-/* FIM DAS FUNCOES RESPONSAVEL POR ATUALIZAR A TELA */
 
-
-
-
-
-/* COMEÇO DAS FUNCOES RESPONSAVEIS PELA LOGICA DO JOGO */
-
-/** Função responsável por verificar a sequência correta
- * Verifica se todas as áreas de resposta estão preenchidas corretamente.
- * Atualiza o botão para avançar à próxima questão e exibe mensagens no console.
- *  * usa if pra saber se:
- *  - todas as divs área foram preenchidas com os itens 
- *  - se o data-name da área e do item estão corretos
- * se estiver tudo certo, ele chama a função que vai atualizar a tela para a próxima rodada
- */
-function sequeciaCorreta() {
-    let areas = document.querySelectorAll('.area'); // Seleciona todas as áreas de resposta
-    let itens = document.querySelectorAll('.area .item');  // Seleciona os itens dentro das áreas
-
-    let areaCorretaPreenchida = true; // Variável de Controle para verificar se todas as áreas estão corretas
-
-    // Verifica se todas as áreas estão preenchidas
-    if (areas.length === itens.length) {
-        btnProximoQuest.style.backgroundColor = "#85c421"; // Atualiza a cor do botão para verde
-        btnProximoQuest.removeEventListener('click', proximaQuest); // Remove qualquer evento de clique previamente registrado para evitar múltiplos disparos
-        btnProximoQuest.addEventListener('click', proximaQuest); // Adiciona o evento de clique ao botão
-        console.log('todas as áreas foram preenchidas com itens');
-
-        // Verifica se os itens nas áreas têm os dataNames corretos
-        areas.forEach(area => {
-            const areaName = area.getAttribute('data-name'); // Data-name da área
-            const item = area.querySelector('.item'); // Pega os itens dentro da área
-           
-            // Verifica se os dataName de áreas e itens estão errados ou certos, ai se muda sua cor pra verde ou vermelho se clicar no botao de proximo
-            // obs: esse efeitos de cor e removido ao passar pro proximo pq tds as divs sao recriadas 
-            if (item) {
-                const itemName = item.getAttribute('data-name');
-                
-                if (itemName !== areaName) {
-                    areaCorretaPreenchida = false;
-                    if (cliqueiProximo) {
-                        item.style.backgroundColor = "#e44545"
-                    }
-                    console.log('o item dessa posição está errado');
-                } 
-                else {
-                    if (cliqueiProximo) {
-                        item.style.backgroundColor = "#85c421"
-                    }
-                    console.log('o item dessa posição está correto');
-                }
-            }
-        });
-    } else { // Caso as áreas não estejam preenchidas
-        btnProximoQuest.style.backgroundColor = "#35454d"; // Botão volta para cinza
-        areaCorretaPreenchida = false;
-        btnProximoQuest.removeEventListener('click', proximaQuest); // Remove o evento de clique
-    }
-
-    // Só cai nesse if se todas as áreas estiverem preenchidas
-    // e se os dataNames dos itens e das áreas estiverem corretos  
-    if (areaCorretaPreenchida) {
-        console.log('todas as áreas foram preenchidas, e seus dataNames estão corretos');
-    }
-}
 
 
 /*
@@ -319,16 +290,16 @@ function resultadoFinal(pt) {
 
 
 /* EVENTOS DO EFEITO DE ARRASTA E SOLTA */
-/* 1 eventos dos itens que irei arrastar e soltar 
- - foram adicinados na funcao que cria elas 
+/* 1 eventos dos itens que irei arrastar e soltar
+ - foram adicinados na funcao que cria elas
 
  2 eventos da area onde irei soltar os items
- - foram adicinados na funcao que cria elas 
+ - foram adicinados na funcao que cria elas
 */
 
 // 3 eventos da div inical onde estava meus itens, inclui a logica de poder dropar de volta os itens na div pai
-document.querySelector('.itens').addEventListener('dragover', dragOverAreaIncial)  // roda quando passa algo por cima dele 
-document.querySelector('.itens').addEventListener('dragleave', dragLeaveAreaIncial)  // roda quando to na area que posso soltar e saio dela 
+document.querySelector('.itens').addEventListener('dragover', dragOverAreaIncial)  // roda quando passa algo por cima dele
+document.querySelector('.itens').addEventListener('dragleave', dragLeaveAreaIncial)  // roda quando to na area que posso soltar e saio dela
 document.querySelector('.itens').addEventListener('drop', dropAreaIncial)  // roda quando soltar o item na area
 
 /* FIM DOS EVENTOS DO EFEITO DE ARRASTA E SOLTA */
@@ -352,32 +323,31 @@ function dragEnd(e) {
 
 
 /* 2 FUNCOES RELACIONADAS A AREA  */
-//2 evento que roda quando passar algo por cima dele no caso o item 
+//2 evento que roda quando passar algo por cima dele no caso o item
 function dragOver(e) {
     // so libera pra drop, ativa efeito de mudar de cor se nao ter nemhum item na area que quero soltar
     if (e.currentTarget.querySelector('.item') === null) {
         e.preventDefault() // libera pra drop
-        e.currentTarget.classList.add('hover') // muda a cor da area quando eu passar por cima dela 
+        e.currentTarget.classList.add('hover') // muda a cor da area quando eu passar por cima dela
         // console.log('passou por cima da area')
     }
 }
 
-//2 evento que roda quando to em uma area que posso soltar e saio dela 
+//2 evento que roda quando to em uma area que posso soltar e saio dela
 function dragLeave(e) {
-    e.currentTarget.classList.remove('hover') // retira o efeito de cor da area quando o item sair de cima dela 
+    e.currentTarget.classList.remove('hover') // retira o efeito de cor da area quando o item sair de cima dela
     // console.log('saio da area dropavel')
 }
 
 /*2 evento quando eu soltar algo
-*  
+*
 *  porem ele so roda se eu liberar no dragover o drop
-*  
+*
 *  obs: como selecionar o item que estou arrastando?
 *  lembra que quando eu arrasto um item  na funcao de item que ta la emcima eu dor uma class que vai mudar a cor dele?
-*  vou usar essa class pra pegalo ate pq ela e retirada dele quando eu o soltar 
+*  vou usar essa class pra pegalo ate pq ela e retirada dele quando eu o soltar
 */
 function drop(e) {
-    // console.trace()
     e.currentTarget.classList.remove('hover') // retira o efeito de cor da area quando soltar o item nela
 
     // pego o item que ta sendo movido OBS: essa calss arrastou item so existe quando ele ta sendo arrastado
@@ -387,16 +357,16 @@ function drop(e) {
     // verificaçao pra saber se ja existe algum item dentro da area que to querendo soltar o item
     if (e.currentTarget.querySelector('.item') === null) {
         e.currentTarget.appendChild(itemSendoMovido)
-        sequeciaCorreta()
+        console.log('solto na area que fica a respota')
+        tudoPreenchido()
     }
 }
 
 
 
-
-//3 FUNCOES DA AREA INICAL DOS ITENS 
-// inclui a logica de poder dropar de volta os itens na div pai 
-// obs: nao irei comentar pq ela e igual as funcoes acima que ja comentei 
+//3 FUNCOES DA AREA INICAL DOS ITENS
+// inclui a logica de poder dropar de volta os itens na div pai
+// obs: nao irei comentar pq ela e igual as funcoes acima que ja comentei
 function dragOverAreaIncial(e) {
     e.preventDefault()
     e.currentTarget.classList.add('hover')
@@ -413,8 +383,8 @@ function dropAreaIncial(e) {
     let itemSenodoMovido = document.querySelector('.item.arastouItem')
 
     e.currentTarget.appendChild(itemSenodoMovido)
-    sequeciaCorreta()// serve pra tirar o verde do botao se tirar o item da area
-    // console.log('soltou em cima da area inical')
+    console.log('soltou em cima da area inical')
+    tudoPreenchido()
 }
 
 /* FIM DAS FUNCOES DO EFEITO DE ARRASTA E SOLTA */
