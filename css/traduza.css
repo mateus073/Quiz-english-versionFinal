@@ -25,7 +25,7 @@
 
 body {
     background: linear-gradient(180deg, var(--preto2), var(--cinza-medio));
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -162,15 +162,15 @@ body {
 
 /* divs filhas onde o usuario ira possicionar as palavras  */
 .area {
-    font-size: var(--font-pp);
+    font-size: var(--font-p);
     /* border-right: solid 1px white; */
     /* border-left: solid 1px white; */
     font-weight: 500;
     padding: 7px;
     color: white;
     transition: all 0.3s;
-    min-height: 45px;
-    min-width: 60px;
+    min-height: 50px;
+    min-width: 0px;
 
 }
 
@@ -187,7 +187,7 @@ body {
     min-height: 5rem;
     border-radius: 10px;
     padding: 1rem;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 
@@ -198,7 +198,7 @@ body {
     text-align: center;
     color: white;
     border-radius: 10px;
-    padding: 0.6rem;
+    padding: 1.1rem;
     background-color: var(--azul-claro);
     transition: all 0.3s;
 }
@@ -213,7 +213,7 @@ body {
 .btnVerificar {
     border: none;
     border-radius: 17px;
-    padding: 1rem;
+    padding: 1.2rem;
     margin: 20px;
     font-size: var(--font-p);
     font-weight: 600;
@@ -309,7 +309,7 @@ body {
 
 
     .questionArea {
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .fatherResult {

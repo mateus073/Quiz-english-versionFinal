@@ -55,8 +55,9 @@
 .menuMob {
     display: none;
 }
-.navMob a{
+.navMob li a {
     font-size: var(--font-g);
+    
 }
 .overlayMenu {
     display: none;
@@ -77,7 +78,6 @@
 .aLink {
     text-decoration: none;
     padding: 10px;
-    font-size: 15pt;
     font-weight: 600;
     color: var(--branco);
     transition: all 0.5s ease;
@@ -239,11 +239,11 @@ footer p {
 
 @media (max-width: 600px) {
     :root {
-        --font-g: 21pt;
-        --font-mg: 18pt;
-        --font-m: 15pt;
-        --font-p: 11pt;
-        --font-pp: 10pt;
+        --font-g: 1.75rem; /* 28px */
+        --font-mg: 1.5rem; /* 24px */
+        --font-m: 1.25rem; /* 20px */
+        --font-p: 1rem; /* 14px */
+        --font-pp: 0.75rem; /* 12px */
     }
 
 

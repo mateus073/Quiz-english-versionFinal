@@ -78,8 +78,9 @@ body {
 }
 
 
+
 .btnCard {
-    padding: 10px;
+    height: 50px;
     font-size: var(--font-p);
     /* background: linear-gradient(160deg, var(--cinza-medio), var(--azul-forte)); */
     background-color: var(--azul-claro);
@@ -93,6 +94,7 @@ body {
 .links {
     font-size: var(--font-p);
     font-weight: 500;
+    padding: 8px 55px;
     text-decoration: none;
     color: var(--branco);
 }

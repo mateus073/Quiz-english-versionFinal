@@ -84,13 +84,6 @@ body {
     transition: all 0.5s;
 }
 
-/* efeito pra respostas e para as opçoes de tema */
-.rOption:hover,
-.option:hover {
-    transform: scale(1.1);
-    box-shadow: 4px 4px 6px var(--cinza-forte);
-}
-
 
 
 
@@ -160,9 +153,17 @@ body {
     color: white;
     border: solid 3px var(--cinza-claro);
     border-radius: 15px;
-    padding: 1.1rem;
+    padding: 1.5rem;
     transition: all 0.3s;
 }
+
+/* efeito pra respostas e para as opçoes de tema */
+.rOption:hover,
+.option:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 6px var(--cinza-forte);
+}
+
 
 /* botoes */
 .traducao,
@@ -276,7 +277,7 @@ main {
         --font-g: 1.75rem; /* 28px */
         --font-mg: 1.5rem; /* 24px */
         --font-m: 1.25rem; /* 20px */
-        --font-p: 0.875rem; /* 14px */
+        --font-p: 1rem; /* 14px */
         --font-pp: 0.75rem; /* 12px */
     }
 
@@ -302,9 +303,7 @@ main {
     }
 
 /* opcoes de reposta */
-.rOption {
-    padding: 1rem;
-}
+
 
 
     /* botoes */

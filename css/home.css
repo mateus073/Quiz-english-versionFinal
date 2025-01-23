@@ -11,6 +11,7 @@ body {
 
 /* tirando as paradas do link */
 .links {
+    padding: 10px 25px;
     text-decoration: none;
     color: var(--branco);
 }
@@ -62,19 +63,23 @@ body {
     justify-content: left;
 }
 
-.dbtntex button {
+/*inicar e a class do dois botoes do home */
+.iniciar {
     display: none;
-    padding: 1rem;
-    width: 150px;
+}
+
+/* os dois botoes */
+.btnH {
+    height: 40px;
+    width: 140px;
     font-size: var(--font-p);
     font-weight: 800;
-    background: linear-gradient(160deg, var(--preto), var(--cinza-forte), var(--azul-medio));
+    background: linear-gradient(160deg, var(--preto2), var(--cinza-forte), var(--azul-medio));
     border: none;
     border-radius: 30px;
     color: var(--branco);
-    /* filter: drop-shadow(1px 1px 1px var(--azul-claro)); */
+    filter: drop-shadow(2px 2px 2px var(--cinza-forte)); 
 }
-
 
 
 .logoHome {
@@ -85,7 +90,7 @@ body {
 }
 
 .logoHome img {
-    height: 250px;
+    height: 320px;
     transition: all 0.5s;
 }
 
@@ -116,16 +121,8 @@ body {
     align-items: center;
 }
 
-.verULtimaPt button {
-    /* filter: drop-shadow(1px 1px 1px var(--azul-claro)); */
-    width: 40%;
-    padding: 1rem;
-    border: none;
-    border-radius: 30px;
-    font-size: var(--font-p);
-    font-weight: 600;
-    color: var(--branco);
-    background: linear-gradient(160deg, var(--preto), var(--cinza-forte), var(--azul-medio));
+.btnInic button {
+    background: linear-gradient(160deg, var(--azul-forte), var(--azul-claro));
 }
 
 
@@ -139,15 +136,15 @@ body {
 
 .pcMain1 {
     display: flex;
-    justify-content: space-around;
-    padding: 80px 0px;
+    justify-content: space-evenly;
+    padding-bottom: 80px;
+    margin-top: 3rem;
 }
 
 .pcMain1 button {
     border: none;
     border-radius: 30px;
-    padding: 1rem;
-    font-size: var(--font-m);
+    font-size: var(--font-p);
     background: linear-gradient(160deg, var(--azul-forte), var(--azul-claro));
     /* filter: drop-shadow(1px 1px 2px var(--azul-claro)); */
     color: var(--branco);
@@ -213,11 +210,11 @@ body {
 }
 
 .imgCard {
-    box-shadow: 2px 2px 3px var(--cinza-forte);
+    filter: drop-shadow(2px 2px 2px var(--cinza-medio));
     border-radius: 20px;
     padding: 1rem;
     background-color: rgb(245, 250, 255);
-    width: 300px;
+    width: 280px;
     height: 350px;
     margin: 1rem;
     display: flex;
@@ -257,16 +254,16 @@ body {
     width: 80px;
 }
 
-
 .btnCard {
-    padding: 10px;
+    height: 40px;
+    width: 140px;
     font-size: var(--font-p);
-    background: linear-gradient(160deg, var(--cinza-medio), var(--azul-forte));
-    color: var(--branco);
+    font-weight: 800;
+    background: linear-gradient(160deg, var(--cinza-medio), var(--azul-forte));;
     border: none;
     border-radius: 30px;
-    width: 100%;
-    margin-bottom: 30px;
+    color: var(--branco);
+    filter: drop-shadow(2px 2px 2px var(--cinza-forte)); 
 }
 
 
@@ -343,6 +340,11 @@ footer p {
     /****************** css do menu de navegaçao ta no arquivo "menuFooter"*******************************/
 
     /* responsividade do main */
+    .logoHome img {
+        height: 150px;
+        transition: all 0.5s;
+    }
+
     .texto {
         display: none;
     }
@@ -365,9 +367,6 @@ footer p {
 
 
 
-    .verULtimaPt button {
-        padding: 15px;
-    }
 
     .pcMain1 {
         display: none;
@@ -383,11 +382,7 @@ footer p {
         padding: 0px 10px;
     }
 
-    .card {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 0rem 1rem;
-    }
+
 
     .imgCard {
         padding: 1rem;
@@ -443,8 +438,5 @@ footer p {
         gap: 1rem;
     }
 
-    .btnCard {
-        font-size: 12px;
-        padding: 8px 16px;
-    }
+
 }
