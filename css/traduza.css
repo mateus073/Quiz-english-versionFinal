@@ -170,7 +170,7 @@ body {
     color: white;
     transition: all 0.3s;
     min-height: 50px;
-    min-width: 0px;
+    min-width: 50px;
 
 }
 
