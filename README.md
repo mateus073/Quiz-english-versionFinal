@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-    <b>Descrição curta do projeto — o que ele faz e pra quem.</b>
+    <b>Aplicação web interativa para prática de inglês inspirado no "Duolingo”.</b>
 </p>
 
 <p align="center">
