@@ -101,10 +101,10 @@ body {
 
 .logar {
     filter: drop-shadow(2px 2px 3px var(--azul-claro));
-    padding: 10px 30px;
+    padding: 15px 30px;
     margin: 20px;
     border: none;
-    border-radius: 30px;
+    border-radius: 12px;
     font-size: var(--font-p);
     font-weight: 600;
     color: var(--branco);
